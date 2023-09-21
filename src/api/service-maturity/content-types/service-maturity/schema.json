@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_maturities",
+  "info": {
+    "singularName": "service-maturity",
+    "pluralName": "service-maturities",
+    "displayName": "Maturity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "service_maturity"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "who_s_who_lists",
+  "info": {
+    "singularName": "who-s-who-list",
+    "pluralName": "who-s-who-lists",
+    "displayName": "Who'sWhoList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Display_order": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interaction_types",
+  "info": {
+    "singularName": "interaction-type",
+    "pluralName": "interaction-types",
+    "displayName": "Interaction Type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "int_id": {
+      "type": "integer",
+      "unique": true
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "interaction_types"
+    }
+  }
+}

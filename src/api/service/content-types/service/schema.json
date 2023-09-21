@@ -1,0 +1,106 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Services",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {},
+      "required": true
+    },
+    "url": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "power_by_service_plus": {
+      "pluginOptions": {},
+      "type": "boolean",
+      "default": false
+    },
+    "service_plus_id": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "url_is_on_gov_domain": {
+      "pluginOptions": {},
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "keywords": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": true
+    },
+    "service_maturity": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-maturity.service-maturity",
+      "inversedBy": "services"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-type.service-type",
+      "inversedBy": "services"
+    },
+    "central_ministry_dept": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::central-ministry-dept.central-ministry-dept",
+      "inversedBy": "services"
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "text",
+      "required": true
+    },
+    "people_groups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::people-group.people-group",
+      "mappedBy": "services"
+    },
+    "service_language": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-language.service-language",
+      "inversedBy": "services"
+    },
+    "interaction_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::interaction-type.interaction-type",
+      "inversedBy": "services"
+    },
+    "category_list": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category-group.category-group",
+      "inversedBy": "services"
+    },
+    "state_dists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::location-state-dist.location-state-dist",
+      "inversedBy": "services"
+    },
+    "state_dept_orgs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state-dept-org.state-dept-org",
+      "inversedBy": "services"
+    }
+  }
+}

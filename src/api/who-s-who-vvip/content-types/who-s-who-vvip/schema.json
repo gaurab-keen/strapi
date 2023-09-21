@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "who_s_who_vvips",
+  "info": {
+    "singularName": "who-s-who-vvip",
+    "pluralName": "who-s-who-vvips",
+    "displayName": "VVIPs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "WhosWho_type": {
+      "type": "enumeration",
+      "enum": [
+        "President",
+        "Vice-President",
+        "Prime minister",
+        "Council of Ministers",
+        "Governors",
+        "Lt. Governors & Administrators",
+        "Chief Ministers",
+        "Judges of Supreme Court",
+        "Chiefs of Armed Forces",
+        "Members of Parliament",
+        "MLAs/MLCs"
+      ],
+      "required": true
+    },
+    "coverage_state_ut": {
+      "type": "enumeration",
+      "enum": [
+        "Andaman and Nicobar Island (UT)",
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chandigarh (UT)",
+        "Chhattisgarh",
+        "Dadra and Nagar Haveli and Daman and Diu (UT)",
+        "Delhi (NCT)",
+        "Jammu and Kashmir (UT)",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Ladakh (UT)",
+        "Lakshadweep (UT)",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Puducherry (UT)",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal"
+      ]
+    }
+  }
+}

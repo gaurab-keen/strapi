@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whos_whos",
+  "info": {
+    "singularName": "whos-who",
+    "pluralName": "whos-whos",
+    "displayName": "Chiefs of India",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "updatedBy_email": {
+      "type": "string",
+      "visible": false
+    },
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Text_Format": {
+      "type": "enumeration",
+      "enum": [
+        "Full HTML",
+        "Plain Text"
+      ]
+    },
+    "Name": {
+      "type": "string",
+      "unique": true
+    },
+    "Photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Background_Photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Facebook_URL": {
+      "type": "string",
+      "unique": true
+    },
+    "Twitter_URL": {
+      "type": "string",
+      "unique": true
+    },
+    "Phone_No": {
+      "type": "string",
+      "unique": true
+    },
+    "Education": {
+      "type": "text"
+    },
+    "Career": {
+      "type": "text"
+    },
+    "Contact_Details": {
+      "type": "text"
+    },
+    "Body": {
+      "type": "text",
+      "regex": "^(<(p|div|span|h[1-6]|pre|address|table|thead|tbody|tr|td|ul|ol|li|b|i|u|strong|em|br|hr|blockquote|a|img)(\\s+(class|id|src|alt|href|target)=\"[^\"]*\")*\\s*>([\\s\\S]*?)<\\/\\2\\s*>|\\s*)$"
+    },
+    "updatedBy_name": {
+      "type": "string",
+      "visible": false
+    },
+    "state": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi1"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "whos_who_main_sections",
+  "info": {
+    "singularName": "whos-who-main-section",
+    "pluralName": "whos-who-main-sections",
+    "displayName": "Main section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "WhosWho_type": {
+      "type": "enumeration",
+      "enum": [
+        "President",
+        "Vice-President",
+        "Prime minister",
+        "Council of Ministers",
+        "Governors",
+        "Lt. Governors & Administrators",
+        "Chief Ministers",
+        "Judges of Supreme Court",
+        "Chiefs of Armed Forces",
+        "Members of Parliament",
+        "MLAs/MLCs"
+      ],
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "body": {
+      "type": "text"
+    },
+    "text_format": {
+      "type": "enumeration",
+      "enum": [
+        "Full HTML",
+        "Plain text"
+      ],
+      "default": "Full HTML"
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}

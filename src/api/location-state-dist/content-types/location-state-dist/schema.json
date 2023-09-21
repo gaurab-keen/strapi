@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "location_state_dists",
+  "info": {
+    "singularName": "location-state-dist",
+    "pluralName": "location-state-dists",
+    "displayName": "State/Dist.",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "state_dists"
+    }
+  }
+}

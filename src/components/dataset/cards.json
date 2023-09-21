@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_dataset_cards",
+  "info": {
+    "displayName": "cards",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "string"
+    },
+    "bg_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "redirect_url": {
+      "type": "string"
+    },
+    "nid": {
+      "type": "integer"
+    }
+  }
+}

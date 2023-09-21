@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_languages",
+  "info": {
+    "singularName": "service-language",
+    "pluralName": "service-languages",
+    "displayName": "Service Language",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "language": {
+      "type": "string",
+      "required": true
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "service_language"
+    },
+    "language_id": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

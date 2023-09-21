@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "state_dept_orgs",
+  "info": {
+    "singularName": "state-dept-org",
+    "pluralName": "state-dept-orgs",
+    "displayName": "State Dept/Org.",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "private": true,
+      "mappedBy": "state_dept_orgs"
+    },
+    "code": {
+      "type": "string",
+      "unique": true
+    },
+    "lgd_code": {
+      "type": "integer",
+      "unique": true,
+      "required": false
+    },
+    "state_or_ut": {
+      "type": "enumeration",
+      "enum": [
+        "S",
+        "U"
+      ],
+      "default": "S",
+      "required": true
+    }
+  }
+}

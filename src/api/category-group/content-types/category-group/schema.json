@@ -1,0 +1,103 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_groups",
+  "info": {
+    "singularName": "category-group",
+    "pluralName": "category-groups",
+    "displayName": "Category List",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "pluginOptions": {}
+    },
+    "description": {
+      "pluginOptions": {},
+      "type": "text",
+      "maxLength": 1000
+    },
+    "icon_home": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {}
+    },
+    "icon_inner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {}
+    },
+    "banner_inner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "pluginOptions": {}
+    },
+    "youtube_code": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "video_caption": {
+      "pluginOptions": {},
+      "type": "string"
+    },
+    "title_hi": {
+      "pluginOptions": {},
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "short_description": {
+      "pluginOptions": {},
+      "type": "text",
+      "maxLength": 250,
+      "required": false
+    },
+    "display_order": {
+      "pluginOptions": {},
+      "type": "integer"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "category_list"
+    },
+    "category_list": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category-group.category-group"
+    },
+    "mytab": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
+    },
+    "statefield": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi1"
+    }
+  }
+}
