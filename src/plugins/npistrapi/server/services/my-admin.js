@@ -3,10 +3,10 @@ module.exports = ({ strapi }) => ({
  async getData(id) {
   try{
     
-    console.log("ata of user")
+    // console.log("ata of user")
       const entries = await strapi.db.query('admin::user')
       .findOne({where: { id }, populate: ['role'] });
-       console.log("data of user "+JSON.stringify(entries));
+      //  console.log("data of user "+JSON.stringify(entries));
       if(entries!=null){
         return entries;
       }

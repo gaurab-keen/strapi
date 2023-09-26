@@ -101,6 +101,10 @@
       "relation": "manyToMany",
       "target": "api::state-dept-org.state-dept-org",
       "inversedBy": "services"
+    },
+    "is_show_homepage": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

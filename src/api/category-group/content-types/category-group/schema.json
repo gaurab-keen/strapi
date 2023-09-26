@@ -98,6 +98,9 @@
     "statefield": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi1"
+    },
+    "is_show_homepage": {
+      "type": "boolean"
     }
   }
 }

@@ -4,18 +4,19 @@ const { ApplicationError } = errors;
 
 module.exports = {
      beforeCreate: async ({ params }) => {
-        const adminUserId = params.data.createdBy;    
+        const adminUserId = params.data.createdBy;   
+        //params.data.title="Farhal  test "+params.data.title;
      },
 
      beforeUpdate: async ({params})=>{
-      strapi.log.debug("Data status  Status "+JSON.stringify(params))
+     // strapi.log.debug("Data status  Status "+JSON.stringify(params))
       const entries = await strapi.db.query('api::whos-who.whos-who').findOne({ 
         where: { id: params.where.id }});   
         if(entries==null)
           return;
 
         if (params.data.hasOwnProperty("publishedAt")) {// check Publish button event
-          strapi.log.debug("Data status  Status "+JSON.stringify(params))
+          //strapi.log.debug("Data status  Status "+JSON.stringify(params))
            if(params.data.publishedAt!=null || params.data.publishedAt!=undefined){
                  if(entries.review!='Approved'){
                    throw new ApplicationError('Collection data is not approved', { foo: 'bar' });
@@ -28,7 +29,7 @@ module.exports = {
                 const entries = await strapi.db.query('api::whos-who.whos-who').update({
                   where: { id: params.where.id },
                               data: {
-                                review:'Under Review',
+                                review:'Draft',
                               }, 
                 });
                 
@@ -39,7 +40,7 @@ module.exports = {
             }   
         }
         else{
-          strapi.log.debug("Data is save button  "+JSON.stringify(entries.review))
+          //strapi.log.debug("Data is save button  "+JSON.stringify(entries.review))
             if(entries.review=="Under Review"){// check for send email 
                 
                 strapi.log.debug("Data is Under Review  Status , We will send Email to Reviewer to check and approved"+JSON.stringify(entries.review))

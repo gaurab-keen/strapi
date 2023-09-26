@@ -16,6 +16,10 @@
       "type": "string",
       "visible": false
     },
+    "updatedBy_name": {
+      "type": "string",
+      "visible": false
+    },
     "Title": {
       "type": "string",
       "required": true
@@ -72,10 +76,6 @@
       "type": "text",
       "regex": "^(<(p|div|span|h[1-6]|pre|address|table|thead|tbody|tr|td|ul|ol|li|b|i|u|strong|em|br|hr|blockquote|a|img)(\\s+(class|id|src|alt|href|target)=\"[^\"]*\")*\\s*>([\\s\\S]*?)<\\/\\2\\s*>|\\s*)$"
     },
-    "updatedBy_name": {
-      "type": "string",
-      "visible": false
-    },
     "state": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi1"
@@ -83,6 +83,9 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "is_show_homepage": {
+      "type": "boolean"
     }
   }
 }

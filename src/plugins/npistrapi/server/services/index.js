@@ -5,5 +5,6 @@ const myAdmin = require('./my-admin');
 
 module.exports = {
   myService,
-  myAdmin
+  myAdmin,
+ 
 };
