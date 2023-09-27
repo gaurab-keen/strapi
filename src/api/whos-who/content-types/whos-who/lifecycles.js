@@ -24,7 +24,7 @@ module.exports = {
                  } 
                  strapi.log.debug("Data is Published  Status  "+JSON.stringify(entries.review))
             }  else{
-              strapi.log.debug("Data is Unpulished "+JSON.stringify(entries.review))
+              strapi.log.debug("Data is Unpublished "+JSON.stringify(entries.review))
               try{
                 const entries = await strapi.db.query('api::whos-who.whos-who').update({
                   where: { id: params.where.id },

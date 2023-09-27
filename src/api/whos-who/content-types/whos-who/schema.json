@@ -20,22 +20,22 @@
       "type": "string",
       "visible": false
     },
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Text_Format": {
+    "text_format": {
       "type": "enumeration",
       "enum": [
         "Full HTML",
         "Plain Text"
       ]
     },
-    "Name": {
+    "name": {
       "type": "string",
       "unique": true
     },
-    "Photo": {
+    "homepage_img": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -43,7 +43,7 @@
         "images"
       ]
     },
-    "Background_Photo": {
+    "bg_photo": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -51,28 +51,28 @@
         "images"
       ]
     },
-    "Facebook_URL": {
+    "facebook_url": {
       "type": "string",
       "unique": true
     },
-    "Twitter_URL": {
+    "x_url": {
       "type": "string",
       "unique": true
     },
-    "Phone_No": {
+    "phone": {
       "type": "string",
       "unique": true
     },
-    "Education": {
+    "education": {
       "type": "text"
     },
-    "Career": {
+    "career": {
       "type": "text"
     },
-    "Contact_Details": {
+    "contact_details": {
       "type": "text"
     },
-    "Body": {
+    "body": {
       "type": "text",
       "regex": "^(<(p|div|span|h[1-6]|pre|address|table|thead|tbody|tr|td|ul|ol|li|b|i|u|strong|em|br|hr|blockquote|a|img)(\\s+(class|id|src|alt|href|target)=\"[^\"]*\")*\\s*>([\\s\\S]*?)<\\/\\2\\s*>|\\s*)$"
     },

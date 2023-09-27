@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "spotlights",
+  "info": {
+    "singularName": "spotlight",
+    "pluralName": "spotlights",
+    "displayName": "Spotlight"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "homepage_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_show_homepage": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
