@@ -1,7 +1,9 @@
-module.exports = {   
-     async getData (api ,query){
+module.exports = {  
+
+     async getData (api,query){
       try{
-        return  serviceData = await strapi.db.query(api).findMany(query);
+        let  serviceData = await strapi.db.query(api).findMany(query);
+        return serviceData;
       }catch(err)
       {
         return {

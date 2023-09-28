@@ -3,16 +3,19 @@
 /**
  * A set of functions called "actions" for `homepage`
  */
- const {dataServiceApi,dataWhosWhoApi,modalPath,dataSpotlightApi,dataDiscoverApi} = require('../../commonFile/pathList')
- const {dataHomepageQuery} = require('../../commonFile/query')
+ const {dataServiceApi,dataWhosWhoApi,modelPath,dataSpotlightApi,dataDiscoverApi} = require('../../commonFile/modelPathList')
+ const {getHomepageQuery, serviceCount} = require('../../commonFile/query')
+ const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover} = require("../../commonFile/selectField")
 module.exports = {
   async homepageData(ctx) {
-    //const serviceData= await strapi.service(servicePath).getData(dataServiceApi,dataServiceQuery);
-    const serviceData= await strapi.service(modalPath).getData(dataServiceApi,dataHomepageQuery);
-    const whoswho= await strapi.service(modalPath).getData(dataWhosWhoApi,dataHomepageQuery);
-    const spotlight= await strapi.service(modalPath).getData(dataSpotlightApi,dataHomepageQuery);
-    const discover= await strapi.service(modalPath).getData(dataDiscoverApi,dataHomepageQuery);
+
+    const serviceData= await strapi.service(modelPath).getData(dataServiceApi,getHomepageQuery(selectHomeService));
+    const whoswho= await strapi.service(modelPath).getData(dataWhosWhoApi,getHomepageQuery(selectHomeWhoswho));
+    const spotlight= await strapi.service(modelPath).getData(dataSpotlightApi,getHomepageQuery(selectHomeSpotlight));
+    const discover= await strapi.service(modelPath).getData(dataDiscoverApi,getHomepageQuery(selectHomeDiscover));
+    const servicesCount= await strapi.query(dataServiceApi).count(serviceCount);
     const homepage = {
+      servicesCount,
       serviceData,
       whoswho,
       spotlight,
