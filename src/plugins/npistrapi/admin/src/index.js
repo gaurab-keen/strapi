@@ -49,7 +49,7 @@ export default {
         },
         components: {
         Input: async() =>
-        import ( /* webpackChunkName: "input-component" */ './components/NestedList'),
+        import ( /* webpackChunkName: "input-component" */ './components/ReviewFlow'),
         
         },
         options: {},
