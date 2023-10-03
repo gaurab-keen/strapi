@@ -162,7 +162,7 @@ const ReviewFlow =  ({
      
   })
   const createProps=(async  (val)=> {   
-    console.log("props  data my data check "+val)
+    //console.log("props  data my data check "+val)
     description='';
     disabled=false;
     error='';

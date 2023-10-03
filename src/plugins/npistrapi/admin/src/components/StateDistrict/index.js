@@ -133,7 +133,7 @@ const StateDistrict =  ({
    }
 
 const handleChange = (val0) => {   
-       console.log("call on change");
+     
         if(val0.id==0)
           setDistrictStatus(false)
         else{

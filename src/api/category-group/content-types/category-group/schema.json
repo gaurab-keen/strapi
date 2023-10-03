@@ -101,6 +101,10 @@
     },
     "is_show_homepage": {
       "type": "boolean"
+    },
+    "nested_data": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi2"
     }
   }
 }
