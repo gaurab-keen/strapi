@@ -5,7 +5,6 @@ module.exports = {
 
     },
     async getDetailsById(path,id){
-
         const entries = await strapi.db.query(path).findOne({ 
             where: { id: id}});   
         return entries;    
