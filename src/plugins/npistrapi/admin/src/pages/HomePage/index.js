@@ -10,9 +10,9 @@ import pluginId from '../../pluginId';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>{pluginId}&apos;s HomePage</h1>
-      <p>Happy coding</p>
+    <div style={{padding:20}}>
+      <h1>s HomePage</h1>
+      <p> Chane my details and show strapi</p>
     </div>
   );
 };

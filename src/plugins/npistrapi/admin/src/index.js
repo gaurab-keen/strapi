@@ -69,11 +69,31 @@ export default {
             },
             components: {
             Input: async() =>
-            import ( /* webpackChunkName: "input-component" */ './components/StateDistrict'),
+            import ( /* webpackChunkName: "input-component" */ './components/CheckBoxList'),
             
             },
             options: {},
             });   
+            app.customFields.register(
+              {
+                name: "npistrapi2",
+                pluginId: "npistrapi",
+                type: "json",
+                intlLabel: {
+                id: "npistrapi2.label",
+                defaultMessage: "Nested",
+                },
+                intlDescription: {
+                id: "npistrapi2.description",
+                defaultMessage: "Nested selection",
+                },
+                components: {
+                Input: async() =>
+                import ( /* webpackChunkName: "input-component" */ './components/NestedSelectWithSearch'),
+                
+                },
+                options: {},
+                });  
   },
 
   

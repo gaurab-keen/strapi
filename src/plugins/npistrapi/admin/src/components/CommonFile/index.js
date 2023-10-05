@@ -1,6 +1,6 @@
  
  export const statusText={
-    statusApproved:"Approved",
+     statusApproved:"Approved",
      statusReject:"Rejected",
      statusDraft:"Draft",
      statusReview:"Under Review"

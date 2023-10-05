@@ -12,4 +12,9 @@ module.exports = ({ strapi }) => {
     plugin: 'npistrapi',
     type: 'string',
   });
+  strapi.customFields.register({
+    name: 'npistrapi2',
+    plugin: 'npistrapi',
+    type: 'json',
+  });
 };
