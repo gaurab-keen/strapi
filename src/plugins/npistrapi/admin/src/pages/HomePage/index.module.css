@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 5rem;
+  padding: 1rem;
+}
+
+.nav h1 {
+  color: rgb(73, 69, 255);
+  text-shadow: 3px 3px 5px #000000;
+  font-size: 4rem;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.main h1 {
+  color: white;
+  text-shadow: 3px 3px 5px #000000;
+  font-size: 3rem;
+}

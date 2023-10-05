@@ -1,8 +1,8 @@
 module.exports = {   
-    modelPath:'api::homepage.data-service',// Home Service path please do not change it 
-    dataServiceApi:'api::service.service',
-    dataWhosWhoApi:'api::whos-who.whos-who',
-    dataSpotlightApi:'api::spotlight.spotlight',
-    dataDiscoverApi:'api::discovering-bharat.discovering-bharat'
-   
+    pathHomeservice:'api::homepage.data-service',// Home Service path please do not change it 
+    pathService:'api::service.service',
+    pathWhosWho:'api::whos-who.whos-who',
+    pathSpotlight:'api::spotlight.spotlight',
+    pathDiscover:'api::discovering-bharat.discovering-bharat',
+    pathInitiative: 'api::initiative.initiative'
 };

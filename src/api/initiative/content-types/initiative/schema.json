@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "initiatives",
+  "info": {
+    "singularName": "initiative",
+    "pluralName": "initiatives",
+    "displayName": "Initiative",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "homepage_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "is_show_homepage": {
+      "type": "boolean",
+      "default": false
+    },
+    "weight": {
+      "type": "integer"
+    },
+    "banner_keywords": {
+      "type": "string"
+    }
+  }
+}

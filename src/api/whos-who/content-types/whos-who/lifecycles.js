@@ -1,77 +1,45 @@
 const { errors } = require('@strapi/utils');
 const { ApplicationError } = errors;
-
+const {getReviewDetailsById,updateReviewById} = require('../../../commonFile/LiveCycleMethod');
+const {pathWhosWho} = require('../../../commonFile/modelPathList');
 
 module.exports = {
      beforeCreate: async ({ params }) => {
-        const adminUserId = params.data.createdBy;   
-        //params.data.title="Farhal  test "+params.data.title;
+      strapi.log.debug("value under params "+JSON.stringify(params))
      },
-
      beforeUpdate: async ({params})=>{
-     // strapi.log.debug("Data status  Status "+JSON.stringify(params))
-      const entries = await strapi.db.query('api::whos-who.whos-who').findOne({ 
-        where: { id: params.where.id }});   
-        if(entries==null)
+      const data=await getReviewDetailsById(pathWhosWho,params.where.id); 
+        if(data==null)
           return;
-
-        if (params.data.hasOwnProperty("publishedAt")) {// check Publish button event
-          //strapi.log.debug("Data status  Status "+JSON.stringify(params))
+        if (params.data.hasOwnProperty("publishedAt")) {// Check event  published or Unpublished button .
            if(params.data.publishedAt!=null || params.data.publishedAt!=undefined){
-                 if(entries.review!='Approved'){
+            strapi.log.debug("Data is Unpublished "+JSON.stringify(data.review))
+              //  Published button event
+                 if(data.review!='Approved'){// If Not Approved we can not save data
                    throw new ApplicationError('Collection data is not approved', { foo: 'bar' });
-                
                  } 
-                 strapi.log.debug("Data is Published  Status  "+JSON.stringify(entries.review))
+                 strapi.log.debug("Data is Published Status  "+JSON.stringify(data.review))
             }  else{
-              strapi.log.debug("Data is Unpublished "+JSON.stringify(entries.review))
-              try{
-                const entries = await strapi.db.query('api::whos-who.whos-who').update({
-                  where: { id: params.where.id },
-                              data: {
-                                review:'Draft',
-                              }, 
-                });
-                
-              }
-             catch(exp){
-            }
-              strapi.log.debug("Data is unpublished  Status We will send Email to Reviewer")
+              //  Unpublished button event
+                strapi.log.debug("Data is Unpublished "+JSON.stringify(data.review))
+                updateReviewById(pathWhosWho,params.where.id,'Draft') //update data With Draft Mode When Unplished data
+              strapi.log.debug("Data is unpublished, Status We will send Email to Reviewer")
             }   
         }
-        else{
-          //strapi.log.debug("Data is save button  "+JSON.stringify(entries.review))
-            if(entries.review=="Under Review"){// check for send email 
-                
-                strapi.log.debug("Data is Under Review  Status , We will send Email to Reviewer to check and approved"+JSON.stringify(entries.review))
-              }
+        else if(data.review=="Under Review"){  
+                // Send Email for notify user
+                strapi.log.debug("Data is Under Review Status , We will send Email to Reviewer to check and approved"+JSON.stringify(data.review))    
          }
-      
      },
      afterCreate:async ({result})=>{
-      // try{
-      //       const entries = await strapi.db.query('api::whos-who.whos-who').update({
-      //         where: { id: result.id },
-      //                     data: {
-      //                       updatedBy_email:result.updatedBy.email,
-      //                       updatedBy_name:`${result.updatedBy.firstname} ${result.updatedBy.lastname}`
-      //                     }, 
-      //       });
-      //       if(result.review="Under Review")
-      //       {
-
-      //       }
-      //     }
-      // catch(exp){
-      // }
      },
 
      afterUpdate: async ({result})=>{
-     // strapi.log.debug("after Updated Data data and  "+JSON.stringify(result));
+    
       },
 
      afterDelete: async({result})=>{
-      strapi.log.debug("after Deleted data and  "+JSON.stringify(result));
+      
      }
         
   };

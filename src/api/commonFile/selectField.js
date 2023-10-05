@@ -3,4 +3,5 @@ module.exports ={
     selectHomeService:['title','url'],
     selectHomeSpotlight:['title','url'],
     selectHomeDiscover:['title'],
+    selectHomeInitiative:['title','url','description','weight']
 };

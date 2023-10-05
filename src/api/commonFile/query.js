@@ -1,7 +1,7 @@
-const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover} = require("./selectField")
+const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative} = require("./selectField")
 module.exports = {
 
-  getHomepageQuery:((selectedFiled) =>{
+  getHomepageQuery:((selectedField) =>{
     let data= {  
        where: {
       is_show_homepage: true,
@@ -10,7 +10,7 @@ module.exports = {
       },
     },
      populate: ["homepage_img"],
-     select: selectedFiled 
+     select: selectedField 
     }
     
       return data;
