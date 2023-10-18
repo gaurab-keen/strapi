@@ -20,7 +20,7 @@ const HomePage = () => {
       <h1>Dashboard</h1>
     </div>
     <div className={classes.main}>
-      <h1>Welcome to the Dashboard !!</h1>
+      <h1>Welcome to the NPI CMS !!</h1>
     </div>
     </>
   );
