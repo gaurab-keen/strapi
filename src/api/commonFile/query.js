@@ -1,4 +1,3 @@
-const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative} = require("./selectField")
 module.exports = {
 
   getHomepageQuery:((selectedField) =>{

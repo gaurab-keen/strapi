@@ -4,5 +4,6 @@ module.exports = {
     pathWhosWho:'api::whos-who.whos-who',
     pathSpotlight:'api::spotlight.spotlight',
     pathDiscover:'api::discovering-bharat.discovering-bharat',
-    pathInitiative: 'api::initiative.initiative'
+    pathInitiative: 'api::initiative.initiative',
+    pathImages: 'api::image.image'
 };

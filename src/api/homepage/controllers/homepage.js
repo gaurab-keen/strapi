@@ -3,9 +3,9 @@
 /**
  * A set of functions called "actions" for `homepage`
  */
- const {pathHomeservice,pathService,pathWhosWho,pathSpotlight,pathDiscover,pathInitiative} = require('../../commonFile/modelPathList')
+ const {pathHomeservice,pathService,pathWhosWho,pathSpotlight,pathDiscover,pathInitiative,pathImages} = require('../../commonFile/modelPathList')
  const {getHomepageQuery, serviceCount} = require('../../commonFile/query')
- const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative} = require("../../commonFile/selectField")
+ const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative,selectHomeImage} = require("../../commonFile/selectField")
 module.exports = {
   async homepageData(ctx) {
 
@@ -14,6 +14,7 @@ module.exports = {
     const spotlight= await strapi.service(pathHomeservice).getData(pathSpotlight,getHomepageQuery(selectHomeSpotlight));
     const discover= await strapi.service(pathHomeservice).getData(pathDiscover,getHomepageQuery(selectHomeDiscover));
     const initiative= await strapi.service(pathHomeservice).getData(pathInitiative,getHomepageQuery(selectHomeInitiative));
+    const images= await strapi.service(pathHomeservice).getData(pathImages,getHomepageQuery(selectHomeImage));
     const servicesCount= await strapi.query(pathService).count(serviceCount);
     const homepage = {
       servicesCount,
@@ -21,7 +22,8 @@ module.exports = {
       initiative,
       whoswho,
       spotlight,
-      discover
+      discover,
+      images
     };
     
      ctx.send(JSON.stringify(homepage))

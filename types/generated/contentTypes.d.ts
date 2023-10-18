@@ -920,6 +920,40 @@ export interface ApiGalleryImageGalleryImage extends Schema.CollectionType {
   };
 }
 
+export interface ApiImageImage extends Schema.CollectionType {
+  collectionName: 'images';
+  info: {
+    singularName: 'image';
+    pluralName: 'images';
+    displayName: 'Images';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    homepage_img: Attribute.Media;
+    url: Attribute.String;
+    is_show_homepage: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiInitiativeInitiative extends Schema.CollectionType {
   collectionName: 'initiatives';
   info: {
@@ -1685,6 +1719,7 @@ declare module '@strapi/types' {
       'api::council-of-minister.council-of-minister': ApiCouncilOfMinisterCouncilOfMinister;
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
       'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
+      'api::image.image': ApiImageImage;
       'api::initiative.initiative': ApiInitiativeInitiative;
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
