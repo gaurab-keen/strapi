@@ -9,23 +9,44 @@
 module.exports = {
   async homepageData(ctx) {
 
-    const serviceData= await strapi.service(pathHomeservice).getData(pathService,getHomepageQuery(selectHomeService));
-    const whoswho= await strapi.service(pathHomeservice).getData(pathWhosWho,getHomepageQuery(selectHomeWhoswho));
-    const spotlight= await strapi.service(pathHomeservice).getData(pathSpotlight,getHomepageQuery(selectHomeSpotlight));
-    const discover= await strapi.service(pathHomeservice).getData(pathDiscover,getHomepageQuery(selectHomeDiscover));
-    const initiative= await strapi.service(pathHomeservice).getData(pathInitiative,getHomepageQuery(selectHomeInitiative));
-    const images= await strapi.service(pathHomeservice).getData(pathImages,getHomepageQuery(selectHomeImage));
-    const servicesCount= await strapi.query(pathService).count(serviceCount);
-    const homepage = {
-      servicesCount,
-      serviceData,
-      initiative,
-      whoswho,
-      spotlight,
-      discover,
-      images
-    };
+//     const serviceData= await strapi.service(pathHomeservice).getData(pathService,getHomepageQuery(selectHomeService));
+//     const whoswho= await strapi.service(pathHomeservice).getData(pathWhosWho,getHomepageQuery(selectHomeWhoswho));
+//     const spotlight= await strapi.service(pathHomeservice).getData(pathSpotlight,getHomepageQuery(selectHomeSpotlight));
+//     const discover= await strapi.service(pathHomeservice).getData(pathDiscover,getHomepageQuery(selectHomeDiscover));
+//     const initiative= await strapi.service(pathHomeservice).getData(pathInitiative,getHomepageQuery(selectHomeInitiative));
+//     const images= await strapi.service(pathHomeservice).getData(pathImages,getHomepageQuery(selectHomeImage));
+//     const servicesCount= await strapi.query(pathService).count(serviceCount);
+//     const homepage = {
+//       servicesCount,
+//       serviceData,
+//       initiative,
+//       whoswho,
+//       spotlight,
+//       discover,
+//       images
+//     };
     
-     ctx.send(JSON.stringify(homepage))
+//      ctx.send(JSON.stringify(homepage))
+//   }
+// };
+
+    const servicePromise = strapi.service(pathHomeservice).getData(pathService, getHomepageQuery(selectHomeService));
+    const whoswhoPromise = strapi.service(pathHomeservice).getData(pathWhosWho, getHomepageQuery(selectHomeWhoswho));
+    const spotlightPromise = strapi.service(pathHomeservice).getData(pathSpotlight, getHomepageQuery(selectHomeSpotlight));
+    const discoverPromise = strapi.service(pathHomeservice).getData(pathDiscover, getHomepageQuery(selectHomeDiscover));
+    const initiativePromise = strapi.service(pathHomeservice).getData(pathInitiative, getHomepageQuery(selectHomeInitiative));
+    const imagesPromise = strapi.service(pathHomeservice).getData(pathImages, getHomepageQuery(selectHomeImage));
+    const servicesCountPromise = strapi.query(pathService).count(serviceCount);
+
+    // Use Promise.all to execute all promises in parallel
+    return Promise.all([servicePromise, whoswhoPromise, spotlightPromise, discoverPromise, initiativePromise, imagesPromise, servicesCountPromise])
+      .then((results) => {
+        const [serviceData, whoswho, spotlight, discover, initiative, images, servicesCount] = results;
+        const homepage = {servicesCount, serviceData, initiative, whoswho, spotlight, discover,images};
+        return homepage;
+      })
+      .catch((error) => {
+        console.error("At least one promise was rejected:", error);
+      });
   }
 };
