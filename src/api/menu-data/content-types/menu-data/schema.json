@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "menu_datas",
+  "info": {
+    "singularName": "menu-data",
+    "pluralName": "menu-datas",
+    "displayName": "Menu data",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "dataset.data-list"
+    },
+    "parent": {
+      "type": "enumeration",
+      "enum": [
+        "My Goverment",
+        "Sector",
+        "Explore Bharat",
+        "News Hub",
+        "Other Resources"
+      ]
+    },
+    "is_show_homepage": {
+      "type": "boolean"
+    }
+  }
+}

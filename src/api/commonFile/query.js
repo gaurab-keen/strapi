@@ -8,7 +8,7 @@ module.exports = {
         $notNull: true,
       },
     },
-     populate: ["homepage_img"],
+     populate: ["homepage_img","list"],
      select: selectedField 
     }
     

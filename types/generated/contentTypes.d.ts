@@ -1102,6 +1102,48 @@ export interface ApiLocationStateDistLocationStateDist
   };
 }
 
+export interface ApiMenuDataMenuData extends Schema.CollectionType {
+  collectionName: 'menu_datas';
+  info: {
+    singularName: 'menu-data';
+    pluralName: 'menu-datas';
+    displayName: 'Menu data';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    list: Attribute.Component<'dataset.data-list', true>;
+    parent: Attribute.Enumeration<
+      [
+        'My Goverment',
+        'Sector',
+        'Explore Bharat',
+        'News Hub',
+        'Other Resources'
+      ]
+    >;
+    is_show_homepage: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::menu-data.menu-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::menu-data.menu-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPeopleGroupPeopleGroup extends Schema.CollectionType {
   collectionName: 'people_groups';
   info: {
@@ -1724,6 +1766,7 @@ declare module '@strapi/types' {
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::location-state-dist.location-state-dist': ApiLocationStateDistLocationStateDist;
+      'api::menu-data.menu-data': ApiMenuDataMenuData;
       'api::people-group.people-group': ApiPeopleGroupPeopleGroup;
       'api::service.service': ApiServiceService;
       'api::service-language.service-language': ApiServiceLanguageServiceLanguage;

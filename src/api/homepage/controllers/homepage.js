@@ -3,9 +3,9 @@
 /**
  * A set of functions called "actions" for `homepage`
  */
- const {pathHomeservice,pathService,pathWhosWho,pathSpotlight,pathDiscover,pathInitiative,pathImages} = require('../../commonFile/modelPathList')
+ const {pathHomeservice,pathService,pathWhosWho,pathSpotlight,pathDiscover,pathInitiative,pathImages,pathMenulist} = require('../../commonFile/modelPathList')
  const {getHomepageQuery, serviceCount} = require('../../commonFile/query')
- const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative,selectHomeImage} = require("../../commonFile/selectField")
+ const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative,selectHomeImage,selectHomeMenuList} = require("../../commonFile/selectField")
 module.exports = {
   async homepageData(ctx) {
 
@@ -36,13 +36,15 @@ module.exports = {
     const discoverPromise = strapi.service(pathHomeservice).getData(pathDiscover, getHomepageQuery(selectHomeDiscover));
     const initiativePromise = strapi.service(pathHomeservice).getData(pathInitiative, getHomepageQuery(selectHomeInitiative));
     const imagesPromise = strapi.service(pathHomeservice).getData(pathImages, getHomepageQuery(selectHomeImage));
+    const menulistPromise = strapi.service(pathHomeservice).getData(pathMenulist, getHomepageQuery(selectHomeMenuList));
+
     const servicesCountPromise = strapi.query(pathService).count(serviceCount);
 
     // Use Promise.all to execute all promises in parallel
-    return Promise.all([servicePromise, whoswhoPromise, spotlightPromise, discoverPromise, initiativePromise, imagesPromise, servicesCountPromise])
+    return Promise.all([servicePromise, whoswhoPromise, spotlightPromise, discoverPromise, initiativePromise, imagesPromise, servicesCountPromise, menulistPromise])
       .then((results) => {
-        const [serviceData, whoswho, spotlight, discover, initiative, images, servicesCount] = results;
-        const homepage = {servicesCount, serviceData, initiative, whoswho, spotlight, discover,images};
+        const [serviceData, whoswho, spotlight, discover, initiative, images, servicesCount, menuList] = results;
+        const homepage = {servicesCount, menuList, serviceData, initiative, whoswho, spotlight, discover,images};
         return homepage;
       })
       .catch((error) => {

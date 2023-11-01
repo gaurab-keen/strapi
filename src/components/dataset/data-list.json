@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_dataset_data_lists",
+  "info": {
+    "displayName": "DataList",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

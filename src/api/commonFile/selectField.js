@@ -4,5 +4,6 @@ module.exports = {
     selectHomeSpotlight:['title','url'],
     selectHomeDiscover:['title'],
     selectHomeInitiative:['title','url','description','weight'],
-    selectHomeImage:['title']
+    selectHomeImage:['title'],
+    selectHomeMenuList:['title','parent']
 };

@@ -5,5 +5,6 @@ module.exports = {
     pathSpotlight:'api::spotlight.spotlight',
     pathDiscover:'api::discovering-bharat.discovering-bharat',
     pathInitiative: 'api::initiative.initiative',
-    pathImages: 'api::image.image'
+    pathImages: 'api::image.image',
+    pathMenulist: 'api::menu-data.menu-data'
 };
