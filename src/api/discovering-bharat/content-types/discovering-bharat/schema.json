@@ -36,6 +36,10 @@
         "produce",
         "states"
       ]
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

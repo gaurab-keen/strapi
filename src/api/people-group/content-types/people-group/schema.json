@@ -39,6 +39,15 @@
       "relation": "manyToMany",
       "target": "api::service.service",
       "inversedBy": "people_groups"
+    },
+    "review": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

@@ -76,10 +76,6 @@
       "type": "text",
       "regex": "^(<(p|div|span|h[1-6]|pre|address|table|thead|tbody|tr|td|ul|ol|li|b|i|u|strong|em|br|hr|blockquote|a|img)(\\s+(class|id|src|alt|href|target)=\"[^\"]*\")*\\s*>([\\s\\S]*?)<\\/\\2\\s*>|\\s*)$"
     },
-    "state": {
-      "type": "customField",
-      "customField": "plugin::npistrapi.npistrapi1"
-    },
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"

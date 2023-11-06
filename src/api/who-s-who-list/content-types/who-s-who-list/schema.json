@@ -4,7 +4,8 @@
   "info": {
     "singularName": "who-s-who-list",
     "pluralName": "who-s-who-lists",
-    "displayName": "Who'sWhoList"
+    "displayName": "Who'sWhoList",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,6 +19,10 @@
     "Display_order": {
       "type": "integer",
       "required": true
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

@@ -20,6 +20,10 @@
       "relation": "manyToMany",
       "target": "api::service.service",
       "mappedBy": "state_dists"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

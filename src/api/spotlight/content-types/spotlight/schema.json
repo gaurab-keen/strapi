@@ -4,7 +4,8 @@
   "info": {
     "singularName": "spotlight",
     "pluralName": "spotlights",
-    "displayName": "Spotlight"
+    "displayName": "Spotlight",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,6 +29,10 @@
     "is_show_homepage": {
       "type": "boolean",
       "default": false
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

@@ -25,6 +25,10 @@
     "language_id": {
       "type": "integer",
       "required": true
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

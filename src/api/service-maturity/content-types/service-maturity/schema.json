@@ -20,6 +20,10 @@
       "relation": "oneToMany",
       "target": "api::service.service",
       "mappedBy": "service_maturity"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

@@ -23,11 +23,12 @@
         "images"
       ]
     },
-    "url": {
-      "type": "string"
-    },
     "is_show_homepage": {
       "type": "boolean"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

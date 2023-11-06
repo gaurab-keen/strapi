@@ -76,6 +76,10 @@
         "Uttarakhand",
         "West Bengal"
       ]
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

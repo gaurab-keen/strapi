@@ -24,6 +24,10 @@
       "relation": "manyToMany",
       "target": "api::service.service",
       "mappedBy": "interaction_types"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

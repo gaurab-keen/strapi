@@ -39,6 +39,10 @@
     },
     "banner_keywords": {
       "type": "string"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

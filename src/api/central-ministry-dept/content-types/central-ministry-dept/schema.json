@@ -52,6 +52,10 @@
       "relation": "manyToMany",
       "target": "api::council-of-minister.council-of-minister",
       "inversedBy": "central_ministry_depts"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

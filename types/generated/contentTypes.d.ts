@@ -714,13 +714,11 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
       'oneToOne',
       'api::category-group.category-group'
     >;
-    mytab: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    statefield: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi1'>;
     is_show_homepage: Attribute.Boolean;
     nested_data: Attribute.JSON &
       Attribute.CustomField<'plugin::npistrapi.npistrapi2'>;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -770,6 +768,8 @@ export interface ApiCentralMinistryDeptCentralMinistryDept
       'manyToMany',
       'api::council-of-minister.council-of-minister'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -830,6 +830,8 @@ export interface ApiCouncilOfMinisterCouncilOfMinister
     Language: Attribute.Enumeration<['Language neutral', 'English']> &
       Attribute.DefaultTo<'English'>;
     Body: Attribute.Text;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -867,6 +869,8 @@ export interface ApiDiscoveringBharatDiscoveringBharat
     type: Attribute.Enumeration<
       ['travel', 'profile', 'culinary', 'produce', 'states']
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -902,6 +906,8 @@ export interface ApiGalleryImageGalleryImage extends Schema.CollectionType {
     image: Attribute.String;
     thumb_img_url: Attribute.String;
     full_img_url: Attribute.String;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -934,8 +940,9 @@ export interface ApiImageImage extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     homepage_img: Attribute.Media;
-    url: Attribute.String;
     is_show_homepage: Attribute.Boolean;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -973,6 +980,8 @@ export interface ApiInitiativeInitiative extends Schema.CollectionType {
     is_show_homepage: Attribute.Boolean & Attribute.DefaultTo<false>;
     weight: Attribute.Integer;
     banner_keywords: Attribute.String;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1011,6 +1020,8 @@ export interface ApiInteractionTypeInteractionType
       'manyToMany',
       'api::service.service'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1022,42 +1033,6 @@ export interface ApiInteractionTypeInteractionType
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::interaction-type.interaction-type',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLandingPageLandingPage extends Schema.CollectionType {
-  collectionName: 'landing_pages';
-  info: {
-    singularName: 'landing-page';
-    pluralName: 'landing-pages';
-    displayName: 'Landing Sections';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    subtitle: Attribute.String;
-    description: Attribute.Text;
-    bg_image: Attribute.Media;
-    dataset: Attribute.Component<'dataset.cards', true>;
-    section: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing-page.landing-page',
       'oneToOne',
       'admin::user'
     > &
@@ -1084,6 +1059,8 @@ export interface ApiLocationStateDistLocationStateDist
       'manyToMany',
       'api::service.service'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1126,6 +1103,8 @@ export interface ApiMenuDataMenuData extends Schema.CollectionType {
       ]
     >;
     is_show_homepage: Attribute.Boolean;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1180,6 +1159,13 @@ export interface ApiPeopleGroupPeopleGroup extends Schema.CollectionType {
       'manyToMany',
       'api::service.service'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1214,7 +1200,6 @@ export interface ApiServiceService extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
@@ -1273,6 +1258,8 @@ export interface ApiServiceService extends Schema.CollectionType {
     >;
     is_show_homepage: Attribute.Boolean & Attribute.DefaultTo<false>;
     homepage_img: Attribute.Media;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1280,12 +1267,14 @@ export interface ApiServiceService extends Schema.CollectionType {
       'api::service.service',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::service.service',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1309,6 +1298,8 @@ export interface ApiServiceLanguageServiceLanguage
       'api::service.service'
     >;
     language_id: Attribute.Integer & Attribute.Required;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1346,6 +1337,8 @@ export interface ApiServiceMaturityServiceMaturity
       'oneToMany',
       'api::service.service'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1382,6 +1375,8 @@ export interface ApiServiceTypeServiceType extends Schema.CollectionType {
       'oneToMany',
       'api::service.service'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1406,6 +1401,7 @@ export interface ApiSpotlightSpotlight extends Schema.CollectionType {
     singularName: 'spotlight';
     pluralName: 'spotlights';
     displayName: 'Spotlight';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1415,6 +1411,8 @@ export interface ApiSpotlightSpotlight extends Schema.CollectionType {
     url: Attribute.String;
     homepage_img: Attribute.Media;
     is_show_homepage: Attribute.Boolean & Attribute.DefaultTo<false>;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1457,6 +1455,8 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
     state_or_ut: Attribute.Enumeration<['S', 'U']> &
       Attribute.Required &
       Attribute.DefaultTo<'S'>;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1501,6 +1501,8 @@ export interface ApiTouristPlaceTouristPlace extends Schema.CollectionType {
       'oneToMany',
       'api::gallery-image.gallery-image'
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1525,6 +1527,7 @@ export interface ApiWhoSWhoListWhoSWhoList extends Schema.CollectionType {
     singularName: 'who-s-who-list';
     pluralName: 'who-s-who-lists';
     displayName: "Who'sWhoList";
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1532,6 +1535,8 @@ export interface ApiWhoSWhoListWhoSWhoList extends Schema.CollectionType {
   attributes: {
     Title: Attribute.String & Attribute.Required;
     Display_order: Attribute.Integer & Attribute.Required;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1620,6 +1625,8 @@ export interface ApiWhoSWhoVvipWhoSWhoVvip extends Schema.CollectionType {
         'West Bengal'
       ]
     >;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1664,8 +1671,6 @@ export interface ApiWhosWhoWhosWho extends Schema.CollectionType {
     career: Attribute.Text;
     contact_details: Attribute.Text;
     body: Attribute.Text;
-    state: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi1'>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     is_show_homepage: Attribute.Boolean;
@@ -1722,6 +1727,8 @@ export interface ApiWhosWhoMainSectionWhosWhoMainSection
     text_format: Attribute.Enumeration<['Full HTML', 'Plain text']> &
       Attribute.DefaultTo<'Full HTML'>;
     attachments: Attribute.Media;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1764,7 +1771,6 @@ declare module '@strapi/types' {
       'api::image.image': ApiImageImage;
       'api::initiative.initiative': ApiInitiativeInitiative;
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;
-      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::location-state-dist.location-state-dist': ApiLocationStateDistLocationStateDist;
       'api::menu-data.menu-data': ApiMenuDataMenuData;
       'api::people-group.people-group': ApiPeopleGroupPeopleGroup;

@@ -91,20 +91,16 @@
       "relation": "oneToOne",
       "target": "api::category-group.category-group"
     },
-    "mytab": {
-      "type": "customField",
-      "customField": "plugin::npistrapi.npistrapi"
-    },
-    "statefield": {
-      "type": "customField",
-      "customField": "plugin::npistrapi.npistrapi1"
-    },
     "is_show_homepage": {
       "type": "boolean"
     },
     "nested_data": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi2"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

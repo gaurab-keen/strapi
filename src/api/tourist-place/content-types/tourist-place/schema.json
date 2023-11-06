@@ -45,6 +45,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::gallery-image.gallery-image"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

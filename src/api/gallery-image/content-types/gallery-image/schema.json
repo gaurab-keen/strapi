@@ -26,6 +26,10 @@
     },
     "full_img_url": {
       "type": "string"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

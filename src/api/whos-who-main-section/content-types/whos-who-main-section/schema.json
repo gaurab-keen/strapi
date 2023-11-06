@@ -59,6 +59,10 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

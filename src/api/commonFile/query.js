@@ -18,6 +18,7 @@ module.exports = {
 
   serviceCount: {
     where: {
+      is_show_homepage: true,
       publishedAt: {
         $notNull: true,
       },

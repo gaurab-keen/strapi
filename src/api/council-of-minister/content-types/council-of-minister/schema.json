@@ -66,6 +66,10 @@
     },
     "Body": {
       "type": "text"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }

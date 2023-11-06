@@ -1,10 +1,26 @@
 module.exports = {   
-    pathHomeservice:'api::homepage.data-service',// Home Service path please do not change it 
-    pathService:'api::service.service',
-    pathWhosWho:'api::whos-who.whos-who',
-    pathSpotlight:'api::spotlight.spotlight',
+    pathBanner: 'api::banner.data-service',
+    pathCategory: 'api::category-group.category-group',
+    pathMinistryDept: 'api::central-ministry-dept.central-ministry-dept',
+    pathCouncilMin: 'api::council-of-minister.council-of-minister',
     pathDiscover:'api::discovering-bharat.discovering-bharat',
-    pathInitiative: 'api::initiative.initiative',
+    pathGallery:'api::gallery-image.gallery-image',
+    pathHomeservice:'api::homepage.data-service',// Home Service path please do not change it 
     pathImages: 'api::image.image',
-    pathMenulist: 'api::menu-data.menu-data'
+    pathInitiative: 'api::initiative.initiative',
+    pathInteraction: 'api::interaction-type.interaction-type',
+    pathStateDistrict: 'api::location-state-dist.location-state-dist',
+    pathMenulist: 'api::menu-data.menu-data',
+    pathPeopleGrp: 'api::people-group.people-group',
+    pathService:'api::service.service',
+    pathServiceLang:'api::service-language.service-language',
+    pathServiceMaturity: 'api::service-maturity.service-maturity',
+    pathServiceType:'api::service-type.service-type',
+    pathSpotlight:'api::spotlight.spotlight',
+    pathStateDept: 'api::state-dept-org.state-dept-org',
+    pathTourist: 'api::tourist-place.tourist-place',
+    pathWhosWhoList: 'api::who-s-who-list.who-s-who-list',
+    pathWhosWhoVVIP: 'api::who-s-who-vvip.who-s-who-vvip',
+    pathWhosWho:'api::whos-who.whos-who',
+    pathWhosWhoMain: 'api::whos-who-main-section.whos-who-main-section',
 };

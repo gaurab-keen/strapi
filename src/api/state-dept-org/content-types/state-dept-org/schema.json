@@ -41,6 +41,10 @@
       ],
       "default": "S",
       "required": true
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
     }
   }
 }
