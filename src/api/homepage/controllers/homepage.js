@@ -4,7 +4,7 @@
  * A set of functions called "actions" for `homepage`
  */
  const {pathHomeservice,pathService,pathWhosWho,pathSpotlight,pathDiscover,pathInitiative,pathMenulist} = require('../../commonFile/modelPathList')
- const {getHomepageQuery} = require('../../commonFile/query')
+ const {getHomepageQuery, serviceCount} = require('../../commonFile/query')
  const {selectHomeWhoswho,selectHomeService,selectHomeSpotlight,selectHomeDiscover,selectHomeInitiative,selectHomeMenuList} = require("../../commonFile/selectField")
 module.exports = {
   async homepageData(ctx) {
@@ -36,12 +36,13 @@ module.exports = {
     const discoverPromise = strapi.service(pathHomeservice).getData(pathDiscover, getHomepageQuery(selectHomeDiscover));
     const initiativePromise = strapi.service(pathHomeservice).getData(pathInitiative, getHomepageQuery(selectHomeInitiative));
     const menulistPromise = strapi.service(pathHomeservice).getData(pathMenulist, getHomepageQuery(selectHomeMenuList));
+    const servicesCountPromise = strapi.query(pathService).count(serviceCount);
 
     // Use Promise.all to execute all promises in parallel
-    return Promise.all([servicePromise, whoswhoPromise, spotlightPromise, discoverPromise, initiativePromise, menulistPromise])
+    return Promise.all([servicePromise, whoswhoPromise, spotlightPromise, discoverPromise, initiativePromise, menulistPromise, servicesCountPromise])
       .then((results) => {
-        const [serviceData, whoswho, spotlight, discover, initiative, menuList] = results;
-        const homepage = {menuList, serviceData, initiative, whoswho, spotlight, discover};
+        const [serviceData, whoswho, spotlight, discover, initiative, menuList, servicesCount] = results;
+        const homepage = {servicesCount, serviceData, menuList, initiative, whoswho, spotlight, discover};
         return homepage;
       })
       .catch((error) => {

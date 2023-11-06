@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * A set of functions called "actions" for `homepage`
- */
  const {pathBanner,pathService,pathImages} = require('../../commonFile/modelPathList')
  const {getHomepageQuery, serviceCount} = require('../../commonFile/query')
  const {selectHomeImage} = require("../../commonFile/selectField")
