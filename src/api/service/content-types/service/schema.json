@@ -13,34 +13,28 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string",
+      "type": "text",
       "pluginOptions": {},
       "required": true
     },
     "url": {
       "pluginOptions": {},
-      "type": "string",
+      "type": "text",
       "required": true,
       "unique": true
     },
     "power_by_service_plus": {
       "pluginOptions": {},
-      "type": "boolean",
-      "default": false
-    },
-    "service_plus_id": {
-      "pluginOptions": {},
-      "type": "string"
+      "type": "boolean"
     },
     "url_is_on_gov_domain": {
       "pluginOptions": {},
       "type": "boolean",
-      "default": false,
       "required": true
     },
     "keywords": {
       "pluginOptions": {},
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "service_maturity": {
@@ -66,11 +60,11 @@
       "type": "text",
       "required": true
     },
-    "people_groups": {
+    "people_group": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::people-group.people-group",
-      "mappedBy": "services"
+      "inversedBy": "services"
     },
     "service_language": {
       "type": "relation",
@@ -78,7 +72,7 @@
       "target": "api::service-language.service-language",
       "inversedBy": "services"
     },
-    "interaction_types": {
+    "interaction_type": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::interaction-type.interaction-type",
@@ -103,8 +97,7 @@
       "inversedBy": "services"
     },
     "is_show_homepage": {
-      "type": "boolean",
-      "default": false
+      "type": "boolean"
     },
     "homepage_img": {
       "type": "media",
@@ -117,6 +110,68 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "portal_link": {
+      "type": "text"
+    },
+    "metadata_lang": {
+      "type": "enumeration",
+      "enum": [
+        "Assamese",
+        "Bengali",
+        "Bodo",
+        "Dogri",
+        "English",
+        "Gujrati",
+        "Hindi",
+        "Kannada",
+        "Kashmiri",
+        "Konkani",
+        "Maithili",
+        "Malayalam",
+        "Marathi",
+        "Meitei (Manipuri)",
+        "Nepali",
+        "Odia",
+        "Punjabi",
+        "Sanskrit",
+        "Santali",
+        "Sindhi",
+        "Tamil",
+        "Telugu",
+        "Urdu"
+      ],
+      "default": "English"
+    },
+    "listing_page": {
+      "type": "boolean"
+    },
+    "form_available": {
+      "type": "boolean"
+    },
+    "login_required": {
+      "type": "boolean"
+    },
+    "in_UMANG": {
+      "type": "boolean"
+    },
+    "UMANG_url": {
+      "type": "text"
+    },
+    "in_service_plus": {
+      "type": "boolean"
+    },
+    "sp_url": {
+      "type": "text"
+    },
+    "translation_status": {
+      "type": "string"
+    },
+    "translation_id": {
+      "type": "biginteger"
+    },
+    "service_plus_id": {
+      "type": "biginteger"
     }
   }
 }

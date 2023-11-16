@@ -688,7 +688,7 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    title: Attribute.Text & Attribute.Required & Attribute.Unique;
     description: Attribute.Text &
       Attribute.SetMinMaxLength<{
         maxLength: 1000;
@@ -715,10 +715,10 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
       'api::category-group.category-group'
     >;
     is_show_homepage: Attribute.Boolean;
-    nested_data: Attribute.JSON &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi2'>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    state_district: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi1'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -850,6 +850,40 @@ export interface ApiCouncilOfMinisterCouncilOfMinister
   };
 }
 
+export interface ApiCulinaryDelightCulinaryDelight
+  extends Schema.CollectionType {
+  collectionName: 'culinary_delights';
+  info: {
+    singularName: 'culinary-delight';
+    pluralName: 'culinary-delights';
+    displayName: 'Culinary Delight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.Text;
+    section: Attribute.Enumeration<['Culinary Delights', 'Food by Category']>;
+    cards_data: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::culinary-delight.culinary-delight',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::culinary-delight.culinary-delight',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDiscoveringBharatDiscoveringBharat
   extends Schema.CollectionType {
   collectionName: 'discovering_bharats';
@@ -889,12 +923,12 @@ export interface ApiDiscoveringBharatDiscoveringBharat
   };
 }
 
-export interface ApiGalleryImageGalleryImage extends Schema.CollectionType {
-  collectionName: 'gallery_images';
+export interface ApiExploreBharatExploreBharat extends Schema.CollectionType {
+  collectionName: 'explore_bharats';
   info: {
-    singularName: 'gallery-image';
-    pluralName: 'gallery-images';
-    displayName: 'Gallery Image';
+    singularName: 'explore-bharat';
+    pluralName: 'explore-bharats';
+    displayName: 'Explore Bharat';
     description: '';
   };
   options: {
@@ -902,23 +936,26 @@ export interface ApiGalleryImageGalleryImage extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    alt: Attribute.String;
-    image: Attribute.String;
-    thumb_img_url: Attribute.String;
-    full_img_url: Attribute.String;
+    subtitle: Attribute.Text;
+    section: Attribute.Enumeration<
+      ['head', 'travel', 'culinary', 'produce', 'facts']
+    >;
+    show_in_explore: Attribute.Boolean & Attribute.DefaultTo<true>;
+    cards_data: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
+    homepage_img: Attribute.Media;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::gallery-image.gallery-image',
+      'api::explore-bharat.explore-bharat',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::gallery-image.gallery-image',
+      'api::explore-bharat.explore-bharat',
       'oneToOne',
       'admin::user'
     > &
@@ -1014,7 +1051,6 @@ export interface ApiInteractionTypeInteractionType
   };
   attributes: {
     name: Attribute.String;
-    int_id: Attribute.Integer & Attribute.Unique;
     services: Attribute.Relation<
       'api::interaction-type.interaction-type',
       'manyToMany',
@@ -1033,6 +1069,40 @@ export interface ApiInteractionTypeInteractionType
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::interaction-type.interaction-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLandingExploreLandingExplore extends Schema.CollectionType {
+  collectionName: 'landing_explores';
+  info: {
+    singularName: 'landing-explore';
+    pluralName: 'landing-explores';
+    displayName: 'Landing Explore';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    cards: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
+    subtitle: Attribute.Text;
+    homepage_img: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::landing-explore.landing-explore',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::landing-explore.landing-explore',
       'oneToOne',
       'admin::user'
     > &
@@ -1202,14 +1272,11 @@ export interface ApiServiceService extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required & Attribute.Unique;
-    power_by_service_plus: Attribute.Boolean & Attribute.DefaultTo<false>;
-    service_plus_id: Attribute.String;
-    url_is_on_gov_domain: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    keywords: Attribute.String & Attribute.Required;
+    title: Attribute.Text & Attribute.Required;
+    url: Attribute.Text & Attribute.Required & Attribute.Unique;
+    power_by_service_plus: Attribute.Boolean;
+    url_is_on_gov_domain: Attribute.Boolean & Attribute.Required;
+    keywords: Attribute.Text & Attribute.Required;
     service_maturity: Attribute.Relation<
       'api::service.service',
       'manyToOne',
@@ -1226,7 +1293,7 @@ export interface ApiServiceService extends Schema.CollectionType {
       'api::central-ministry-dept.central-ministry-dept'
     >;
     description: Attribute.Text & Attribute.Required;
-    people_groups: Attribute.Relation<
+    people_group: Attribute.Relation<
       'api::service.service',
       'manyToMany',
       'api::people-group.people-group'
@@ -1236,7 +1303,7 @@ export interface ApiServiceService extends Schema.CollectionType {
       'manyToOne',
       'api::service-language.service-language'
     >;
-    interaction_types: Attribute.Relation<
+    interaction_type: Attribute.Relation<
       'api::service.service',
       'manyToMany',
       'api::interaction-type.interaction-type'
@@ -1256,10 +1323,49 @@ export interface ApiServiceService extends Schema.CollectionType {
       'manyToMany',
       'api::state-dept-org.state-dept-org'
     >;
-    is_show_homepage: Attribute.Boolean & Attribute.DefaultTo<false>;
+    is_show_homepage: Attribute.Boolean;
     homepage_img: Attribute.Media;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    portal_link: Attribute.Text;
+    metadata_lang: Attribute.Enumeration<
+      [
+        'Assamese',
+        'Bengali',
+        'Bodo',
+        'Dogri',
+        'English',
+        'Gujrati',
+        'Hindi',
+        'Kannada',
+        'Kashmiri',
+        'Konkani',
+        'Maithili',
+        'Malayalam',
+        'Marathi',
+        'Meitei (Manipuri)',
+        'Nepali',
+        'Odia',
+        'Punjabi',
+        'Sanskrit',
+        'Santali',
+        'Sindhi',
+        'Tamil',
+        'Telugu',
+        'Urdu'
+      ]
+    > &
+      Attribute.DefaultTo<'English'>;
+    listing_page: Attribute.Boolean;
+    form_available: Attribute.Boolean;
+    login_required: Attribute.Boolean;
+    in_UMANG: Attribute.Boolean;
+    UMANG_url: Attribute.Text;
+    in_service_plus: Attribute.Boolean;
+    sp_url: Attribute.Text;
+    translation_status: Attribute.String;
+    translation_id: Attribute.BigInteger;
+    service_plus_id: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1292,12 +1398,12 @@ export interface ApiServiceLanguageServiceLanguage
   };
   attributes: {
     language: Attribute.String & Attribute.Required;
+    language_id: Attribute.Integer & Attribute.Required;
     services: Attribute.Relation<
       'api::service-language.service-language',
       'oneToMany',
       'api::service.service'
     >;
-    language_id: Attribute.Integer & Attribute.Required;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
@@ -1475,79 +1581,34 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
   };
 }
 
-export interface ApiTouristPlaceTouristPlace extends Schema.CollectionType {
-  collectionName: 'tourist_places';
+export interface ApiTravelAndTourismTravelAndTourism
+  extends Schema.CollectionType {
+  collectionName: 'travel_and_tourisms';
   info: {
-    singularName: 'tourist-place';
-    pluralName: 'tourist-places';
-    displayName: 'Tourist Place';
+    singularName: 'travel-and-tourism';
+    pluralName: 'travel-and-tourisms';
+    displayName: 'Travel & Tourism';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    image_url: Attribute.String;
-    description: Attribute.Text;
-    url: Attribute.String;
-    cityName: Attribute.String;
-    districtName: Attribute.String;
-    stateName: Attribute.String;
-    how_to_reach: Attribute.JSON;
-    display_order: Attribute.Integer & Attribute.Required;
-    gallery_images: Attribute.Relation<
-      'api::tourist-place.tourist-place',
-      'oneToMany',
-      'api::gallery-image.gallery-image'
-    >;
-    review: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    title: Attribute.String;
+    subtitle: Attribute.Text;
+    section: Attribute.Enumeration<['Tourism', 'Category', 'Gems']>;
+    cards: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::tourist-place.tourist-place',
+      'api::travel-and-tourism.travel-and-tourism',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::tourist-place.tourist-place',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiWhoSWhoListWhoSWhoList extends Schema.CollectionType {
-  collectionName: 'who_s_who_lists';
-  info: {
-    singularName: 'who-s-who-list';
-    pluralName: 'who-s-who-lists';
-    displayName: "Who'sWhoList";
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String & Attribute.Required;
-    Display_order: Attribute.Integer & Attribute.Required;
-    review: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::who-s-who-list.who-s-who-list',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::who-s-who-list.who-s-who-list',
+      'api::travel-and-tourism.travel-and-tourism',
       'oneToOne',
       'admin::user'
     > &
@@ -1766,11 +1827,13 @@ declare module '@strapi/types' {
       'api::category-group.category-group': ApiCategoryGroupCategoryGroup;
       'api::central-ministry-dept.central-ministry-dept': ApiCentralMinistryDeptCentralMinistryDept;
       'api::council-of-minister.council-of-minister': ApiCouncilOfMinisterCouncilOfMinister;
+      'api::culinary-delight.culinary-delight': ApiCulinaryDelightCulinaryDelight;
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
-      'api::gallery-image.gallery-image': ApiGalleryImageGalleryImage;
+      'api::explore-bharat.explore-bharat': ApiExploreBharatExploreBharat;
       'api::image.image': ApiImageImage;
       'api::initiative.initiative': ApiInitiativeInitiative;
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;
+      'api::landing-explore.landing-explore': ApiLandingExploreLandingExplore;
       'api::location-state-dist.location-state-dist': ApiLocationStateDistLocationStateDist;
       'api::menu-data.menu-data': ApiMenuDataMenuData;
       'api::people-group.people-group': ApiPeopleGroupPeopleGroup;
@@ -1780,8 +1843,7 @@ declare module '@strapi/types' {
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::spotlight.spotlight': ApiSpotlightSpotlight;
       'api::state-dept-org.state-dept-org': ApiStateDeptOrgStateDeptOrg;
-      'api::tourist-place.tourist-place': ApiTouristPlaceTouristPlace;
-      'api::who-s-who-list.who-s-who-list': ApiWhoSWhoListWhoSWhoList;
+      'api::travel-and-tourism.travel-and-tourism': ApiTravelAndTourismTravelAndTourism;
       'api::who-s-who-vvip.who-s-who-vvip': ApiWhoSWhoVvipWhoSWhoVvip;
       'api::whos-who.whos-who': ApiWhosWhoWhosWho;
       'api::whos-who-main-section.whos-who-main-section': ApiWhosWhoMainSectionWhosWhoMainSection;

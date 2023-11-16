@@ -38,7 +38,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::service.service",
-      "inversedBy": "people_groups"
+      "mappedBy": "people_groups"
     },
     "review": {
       "pluginOptions": {

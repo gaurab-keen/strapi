@@ -1,6 +1,35 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface DatasetCards extends Schema.Component {
+export interface CardDataCard1 extends Schema.Component {
+  collectionName: 'components_card_data_card_1s';
+  info: {
+    displayName: 'card-1';
+    icon: 'landscape';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    subtitle: Attribute.Text;
+    img: Attribute.Media;
+    visibility: Attribute.Boolean;
+  };
+}
+
+export interface CardDataCard2 extends Schema.Component {
+  collectionName: 'components_card_data_card_2s';
+  info: {
+    displayName: 'card-2';
+    icon: 'landscape';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    img: Attribute.Media;
+    visibility: Attribute.Boolean;
+  };
+}
+
+export interface CardDataCards extends Schema.Component {
   collectionName: 'components_dataset_cards';
   info: {
     displayName: 'cards';
@@ -31,7 +60,9 @@ export interface DatasetDataList extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'dataset.cards': DatasetCards;
+      'card-data.card-1': CardDataCard1;
+      'card-data.card-2': CardDataCard2;
+      'card-data.cards': CardDataCards;
       'dataset.data-list': DatasetDataList;
     }
   }

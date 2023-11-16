@@ -16,15 +16,15 @@
       "type": "string",
       "required": true
     },
+    "language_id": {
+      "type": "integer",
+      "required": true
+    },
     "services": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::service.service",
       "mappedBy": "service_language"
-    },
-    "language_id": {
-      "type": "integer",
-      "required": true
     },
     "review": {
       "type": "customField",

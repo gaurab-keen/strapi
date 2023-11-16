@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "travel_and_tourisms",
+  "info": {
+    "singularName": "travel-and-tourism",
+    "pluralName": "travel-and-tourisms",
+    "displayName": "Travel & Tourism",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "section": {
+      "type": "enumeration",
+      "enum": [
+        "Tourism",
+        "Category",
+        "Gems"
+      ]
+    },
+    "cards": {
+      "type": "dynamiczone",
+      "components": [
+        "card-data.card-1",
+        "card-data.card-2"
+      ]
+    }
+  }
+}

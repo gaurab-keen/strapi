@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_card_data_card_1s",
+  "info": {
+    "displayName": "card-1",
+    "icon": "landscape",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "visibility": {
+      "type": "boolean"
+    }
+  }
+}

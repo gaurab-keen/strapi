@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "culinary_delights",
+  "info": {
+    "singularName": "culinary-delight",
+    "pluralName": "culinary-delights",
+    "displayName": "Culinary Delight"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "section": {
+      "type": "enumeration",
+      "enum": [
+        "Culinary Delights",
+        "Food by Category"
+      ]
+    },
+    "cards_data": {
+      "type": "dynamiczone",
+      "components": [
+        "card-data.card-1",
+        "card-data.card-2"
+      ]
+    }
+  }
+}

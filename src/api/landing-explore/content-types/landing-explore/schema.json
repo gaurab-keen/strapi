@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "landing_explores",
+  "info": {
+    "singularName": "landing-explore",
+    "pluralName": "landing-explores",
+    "displayName": "Landing Explore",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "dynamiczone",
+      "components": [
+        "card-data.card-1",
+        "card-data.card-2"
+      ]
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "homepage_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "explore_bharats",
+  "info": {
+    "singularName": "explore-bharat",
+    "pluralName": "explore-bharats",
+    "displayName": "Explore Bharat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "section": {
+      "type": "enumeration",
+      "enum": [
+        "head",
+        "travel",
+        "culinary",
+        "produce",
+        "facts"
+      ]
+    },
+    "show_in_explore": {
+      "type": "boolean",
+      "default": true
+    },
+    "cards_data": {
+      "type": "dynamiczone",
+      "components": [
+        "card-data.card-1",
+        "card-data.card-2"
+      ]
+    },
+    "homepage_img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
+    }
+  }
+}

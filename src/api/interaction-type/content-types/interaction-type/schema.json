@@ -15,10 +15,6 @@
     "name": {
       "type": "string"
     },
-    "int_id": {
-      "type": "integer",
-      "unique": true
-    },
     "services": {
       "type": "relation",
       "relation": "manyToMany",

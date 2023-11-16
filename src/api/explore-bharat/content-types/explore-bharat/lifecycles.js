@@ -1,14 +1,14 @@
 const { errors } = require('@strapi/utils');
 const { ApplicationError } = errors;
 const {getReviewDetailsById,updateReviewById} = require('../../../commonFile/LiveCycleMethod');
-const {pathService} = require('../../../commonFile/modelPathList');
+const {pathExplore} = require('../../../commonFile/modelPathList');
 
 module.exports = {
      beforeCreate: async ({ params }) => {
-      // strapi.log.debug("value under params "+JSON.stringify(params))
+      strapi.log.debug("value under params "+JSON.stringify(params))
      },
      beforeUpdate: async ({params})=>{
-      const data=await getReviewDetailsById(pathService,params.where.id); 
+      const data=await getReviewDetailsById(pathExplore,params.where.id); 
         if(data==null)
           return;
         if (params.data.hasOwnProperty("publishedAt")) {// Check event  published or Unpublished button .
@@ -22,7 +22,7 @@ module.exports = {
             }  else{
               //  Unpublished button event
                 strapi.log.debug("Data is Unpublished "+JSON.stringify(data.review))
-                updateReviewById(pathService,params.where.id,'Draft') //update data With Draft Mode When Unplished data
+                updateReviewById(pathExplore,params.where.id,'Draft') //update data With Draft Mode When Unplished data
               strapi.log.debug("Data is unpublished, Status We will send Email to Reviewer")
             }   
         }
@@ -31,7 +31,6 @@ module.exports = {
                 strapi.log.debug("Data is Under Review Status , We will send Email to Reviewer to check and approved"+JSON.stringify(data.review))    
          }
      },
-     
      afterCreate:async ({result})=>{
      },
 
