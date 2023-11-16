@@ -850,40 +850,6 @@ export interface ApiCouncilOfMinisterCouncilOfMinister
   };
 }
 
-export interface ApiCulinaryDelightCulinaryDelight
-  extends Schema.CollectionType {
-  collectionName: 'culinary_delights';
-  info: {
-    singularName: 'culinary-delight';
-    pluralName: 'culinary-delights';
-    displayName: 'Culinary Delight';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    subtitle: Attribute.Text;
-    section: Attribute.Enumeration<['Culinary Delights', 'Food by Category']>;
-    cards_data: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::culinary-delight.culinary-delight',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::culinary-delight.culinary-delight',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiDiscoveringBharatDiscoveringBharat
   extends Schema.CollectionType {
   collectionName: 'discovering_bharats';
@@ -1581,41 +1547,6 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
   };
 }
 
-export interface ApiTravelAndTourismTravelAndTourism
-  extends Schema.CollectionType {
-  collectionName: 'travel_and_tourisms';
-  info: {
-    singularName: 'travel-and-tourism';
-    pluralName: 'travel-and-tourisms';
-    displayName: 'Travel & Tourism';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    subtitle: Attribute.Text;
-    section: Attribute.Enumeration<['Tourism', 'Category', 'Gems']>;
-    cards: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::travel-and-tourism.travel-and-tourism',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::travel-and-tourism.travel-and-tourism',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiWhoSWhoVvipWhoSWhoVvip extends Schema.CollectionType {
   collectionName: 'who_s_who_vvips';
   info: {
@@ -1827,7 +1758,6 @@ declare module '@strapi/types' {
       'api::category-group.category-group': ApiCategoryGroupCategoryGroup;
       'api::central-ministry-dept.central-ministry-dept': ApiCentralMinistryDeptCentralMinistryDept;
       'api::council-of-minister.council-of-minister': ApiCouncilOfMinisterCouncilOfMinister;
-      'api::culinary-delight.culinary-delight': ApiCulinaryDelightCulinaryDelight;
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
       'api::explore-bharat.explore-bharat': ApiExploreBharatExploreBharat;
       'api::image.image': ApiImageImage;
@@ -1843,7 +1773,6 @@ declare module '@strapi/types' {
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::spotlight.spotlight': ApiSpotlightSpotlight;
       'api::state-dept-org.state-dept-org': ApiStateDeptOrgStateDeptOrg;
-      'api::travel-and-tourism.travel-and-tourism': ApiTravelAndTourismTravelAndTourism;
       'api::who-s-who-vvip.who-s-who-vvip': ApiWhoSWhoVvipWhoSWhoVvip;
       'api::whos-who.whos-who': ApiWhosWhoWhosWho;
       'api::whos-who-main-section.whos-who-main-section': ApiWhosWhoMainSectionWhosWhoMainSection;
