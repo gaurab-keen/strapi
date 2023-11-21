@@ -46,6 +46,24 @@ export interface CardDataCards extends Schema.Component {
   };
 }
 
+export interface CardDataExploreCard extends Schema.Component {
+  collectionName: 'components_card_data_explore_cards';
+  info: {
+    displayName: 'explore_card';
+    icon: 'server';
+    description: '';
+  };
+  attributes: {
+    title_1: Attribute.String;
+    title_2: Attribute.String;
+    title_3: Attribute.String;
+    body_1: Attribute.Text;
+    body_2: Attribute.String;
+    img_1: Attribute.Media;
+    img_2: Attribute.Media;
+  };
+}
+
 export interface DatasetDataList extends Schema.Component {
   collectionName: 'components_dataset_data_lists';
   info: {
@@ -63,6 +81,7 @@ declare module '@strapi/types' {
       'card-data.card-1': CardDataCard1;
       'card-data.card-2': CardDataCard2;
       'card-data.cards': CardDataCards;
+      'card-data.explore-card': CardDataExploreCard;
       'dataset.data-list': DatasetDataList;
     }
   }

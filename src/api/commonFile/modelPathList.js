@@ -23,5 +23,6 @@ module.exports = {
     pathWhosWhoVVIP: 'api::who-s-who-vvip.who-s-who-vvip',
     pathWhosWho:'api::whos-who.whos-who',
     pathWhosWhoMain: 'api::whos-who-main-section.whos-who-main-section',
-    pathExplore: 'api::explore-bharat.explore-bharat'
+    pathExplore: 'api::explore-bharat.explore-bharat',
+    pathExploreLanding: 'api::explore-landing.explore-landing'
 };

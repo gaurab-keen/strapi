@@ -13,6 +13,7 @@
     "@strapi/plugin-i18n": "4.15.0",
     "@strapi/plugin-users-permissions": "4.15.0",
     "@strapi/strapi": "4.15.0",
+    "moment-timezone": "^0.5.43",
     "multi-nested-select": "^1.2.1",
     "mysql2": "^3.6.1",
     "pg": "^8.11.3",

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "who_s_who_lists",
+  "info": {
+    "singularName": "who-s-who-list",
+    "pluralName": "who-s-who-lists",
+    "displayName": "Who'sWho List",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "whoswho_type": {
+      "type": "enumeration",
+      "enum": [
+        "Central",
+        "State/UTs"
+      ]
+    },
+    "parent": {
+      "type": "enumeration",
+      "enum": [
+        "Executive",
+        "Military",
+        "Judiciary",
+        "Members of Parliament"
+      ]
+    },
+    "show_in_list": {
+      "type": "boolean"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
+    }
+  }
+}

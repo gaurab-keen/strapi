@@ -17,10 +17,6 @@
       "required": true,
       "unique": true
     },
-    "title_hi": {
-      "type": "string",
-      "unique": true
-    },
     "icon_scroll": {
       "type": "media",
       "multiple": false,
@@ -34,28 +30,12 @@
       "required": true,
       "default": false
     },
-    "services": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::service.service",
-      "mappedBy": "central_ministry_dept"
-    },
-    "cmd_id": {
-      "type": "integer",
-      "unique": true
-    },
-    "cmd_parent": {
-      "type": "integer"
-    },
-    "council_of_ministers": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::council-of-minister.council-of-minister",
-      "inversedBy": "central_ministry_depts"
-    },
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "cmd_id": {
+      "type": "string"
     }
   }
 }

@@ -49,12 +49,6 @@
       "target": "api::service-type.service-type",
       "inversedBy": "services"
     },
-    "central_ministry_dept": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::central-ministry-dept.central-ministry-dept",
-      "inversedBy": "services"
-    },
     "description": {
       "pluginOptions": {},
       "type": "text",
@@ -88,12 +82,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::location-state-dist.location-state-dist",
-      "inversedBy": "services"
-    },
-    "state_dept_orgs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::state-dept-org.state-dept-org",
       "inversedBy": "services"
     },
     "is_show_homepage": {
@@ -172,6 +160,12 @@
     },
     "service_plus_id": {
       "type": "biginteger"
+    },
+    "state_dept_orgs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::state-dept-org.state-dept-org",
+      "mappedBy": "services"
     }
   }
 }

@@ -751,25 +751,13 @@ export interface ApiCentralMinistryDeptCentralMinistryDept
   };
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
-    title_hi: Attribute.String & Attribute.Unique;
     icon_scroll: Attribute.Media;
     is_dept: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    services: Attribute.Relation<
-      'api::central-ministry-dept.central-ministry-dept',
-      'oneToMany',
-      'api::service.service'
-    >;
-    cmd_id: Attribute.Integer & Attribute.Unique;
-    cmd_parent: Attribute.Integer;
-    council_of_ministers: Attribute.Relation<
-      'api::central-ministry-dept.central-ministry-dept',
-      'manyToMany',
-      'api::council-of-minister.council-of-minister'
-    >;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    cmd_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -803,11 +791,6 @@ export interface ApiCouncilOfMinisterCouncilOfMinister
   attributes: {
     Title: Attribute.String & Attribute.Required;
     Profile_image: Attribute.Media;
-    central_ministry_depts: Attribute.Relation<
-      'api::council-of-minister.council-of-minister',
-      'manyToMany',
-      'api::central-ministry-dept.central-ministry-dept'
-    >;
     Facebook_URL: Attribute.String;
     Twitter_URL: Attribute.String;
     Contact_URL: Attribute.String;
@@ -922,6 +905,42 @@ export interface ApiExploreBharatExploreBharat extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::explore-bharat.explore-bharat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExploreLandingExploreLanding extends Schema.CollectionType {
+  collectionName: 'explore_landings';
+  info: {
+    singularName: 'explore-landing';
+    pluralName: 'explore-landings';
+    displayName: 'Explore Landing';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    cards: Attribute.Component<'card-data.explore-card', true>;
+    is_visible: Attribute.Boolean;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::explore-landing.explore-landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::explore-landing.explore-landing',
       'oneToOne',
       'admin::user'
     > &
@@ -1253,11 +1272,6 @@ export interface ApiServiceService extends Schema.CollectionType {
       'manyToOne',
       'api::service-type.service-type'
     >;
-    central_ministry_dept: Attribute.Relation<
-      'api::service.service',
-      'manyToOne',
-      'api::central-ministry-dept.central-ministry-dept'
-    >;
     description: Attribute.Text & Attribute.Required;
     people_group: Attribute.Relation<
       'api::service.service',
@@ -1283,11 +1297,6 @@ export interface ApiServiceService extends Schema.CollectionType {
       'api::service.service',
       'manyToMany',
       'api::location-state-dist.location-state-dist'
-    >;
-    state_dept_orgs: Attribute.Relation<
-      'api::service.service',
-      'manyToMany',
-      'api::state-dept-org.state-dept-org'
     >;
     is_show_homepage: Attribute.Boolean;
     homepage_img: Attribute.Media;
@@ -1332,6 +1341,11 @@ export interface ApiServiceService extends Schema.CollectionType {
     translation_status: Attribute.String;
     translation_id: Attribute.BigInteger;
     service_plus_id: Attribute.BigInteger;
+    state_dept_orgs: Attribute.Relation<
+      'api::service.service',
+      'manyToMany',
+      'api::state-dept-org.state-dept-org'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1516,12 +1530,6 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
-    services: Attribute.Relation<
-      'api::state-dept-org.state-dept-org',
-      'manyToMany',
-      'api::service.service'
-    > &
-      Attribute.Private;
     code: Attribute.String & Attribute.Unique;
     lgd_code: Attribute.Integer & Attribute.Unique;
     state_or_ut: Attribute.Enumeration<['S', 'U']> &
@@ -1529,6 +1537,11 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
       Attribute.DefaultTo<'S'>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    services: Attribute.Relation<
+      'api::state-dept-org.state-dept-org',
+      'manyToMany',
+      'api::service.service'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1540,6 +1553,44 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::state-dept-org.state-dept-org',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWhoSWhoListWhoSWhoList extends Schema.CollectionType {
+  collectionName: 'who_s_who_lists';
+  info: {
+    singularName: 'who-s-who-list';
+    pluralName: 'who-s-who-lists';
+    displayName: "Who'sWho List";
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    whoswho_type: Attribute.Enumeration<['Central', 'State/UTs']>;
+    parent: Attribute.Enumeration<
+      ['Executive', 'Military', 'Judiciary', 'Members of Parliament']
+    >;
+    show_in_list: Attribute.Boolean;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::who-s-who-list.who-s-who-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::who-s-who-list.who-s-who-list',
       'oneToOne',
       'admin::user'
     > &
@@ -1760,6 +1811,7 @@ declare module '@strapi/types' {
       'api::council-of-minister.council-of-minister': ApiCouncilOfMinisterCouncilOfMinister;
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
       'api::explore-bharat.explore-bharat': ApiExploreBharatExploreBharat;
+      'api::explore-landing.explore-landing': ApiExploreLandingExploreLanding;
       'api::image.image': ApiImageImage;
       'api::initiative.initiative': ApiInitiativeInitiative;
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;
@@ -1773,6 +1825,7 @@ declare module '@strapi/types' {
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::spotlight.spotlight': ApiSpotlightSpotlight;
       'api::state-dept-org.state-dept-org': ApiStateDeptOrgStateDeptOrg;
+      'api::who-s-who-list.who-s-who-list': ApiWhoSWhoListWhoSWhoList;
       'api::who-s-who-vvip.who-s-who-vvip': ApiWhoSWhoVvipWhoSWhoVvip;
       'api::whos-who.whos-who': ApiWhosWhoWhosWho;
       'api::whos-who-main-section.whos-who-main-section': ApiWhosWhoMainSectionWhosWhoMainSection;

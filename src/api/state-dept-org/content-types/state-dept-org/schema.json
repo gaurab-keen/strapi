@@ -17,13 +17,6 @@
       "required": true,
       "unique": true
     },
-    "services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::service.service",
-      "private": true,
-      "mappedBy": "state_dept_orgs"
-    },
     "code": {
       "type": "string",
       "unique": true
@@ -45,6 +38,12 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "inversedBy": "state_dept_orgs"
     }
   }
 }

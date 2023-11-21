@@ -24,12 +24,6 @@
         "images"
       ]
     },
-    "central_ministry_depts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::central-ministry-dept.central-ministry-dept",
-      "mappedBy": "council_of_ministers"
-    },
     "Facebook_URL": {
       "type": "string"
     },

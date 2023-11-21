@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_card_data_explore_cards",
+  "info": {
+    "displayName": "explore_card",
+    "icon": "server",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title_1": {
+      "type": "string"
+    },
+    "title_2": {
+      "type": "string"
+    },
+    "title_3": {
+      "type": "string"
+    },
+    "body_1": {
+      "type": "text"
+    },
+    "body_2": {
+      "type": "string"
+    },
+    "img_1": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "img_2": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
