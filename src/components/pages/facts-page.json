@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_pages_facts_pages",
+  "info": {
+    "displayName": "facts page",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "page_title": {
+      "type": "string"
+    },
+    "is_visible": {
+      "type": "boolean"
+    },
+    "page_content": {
+      "type": "richtext"
+    }
+  }
+}

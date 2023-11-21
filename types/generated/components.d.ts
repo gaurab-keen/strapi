@@ -75,6 +75,20 @@ export interface DatasetDataList extends Schema.Component {
   };
 }
 
+export interface PagesFactsPage extends Schema.Component {
+  collectionName: 'components_pages_facts_pages';
+  info: {
+    displayName: 'facts page';
+    icon: 'file';
+    description: '';
+  };
+  attributes: {
+    page_title: Attribute.String;
+    is_visible: Attribute.Boolean;
+    page_content: Attribute.RichText;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -83,6 +97,7 @@ declare module '@strapi/types' {
       'card-data.cards': CardDataCards;
       'card-data.explore-card': CardDataExploreCard;
       'dataset.data-list': DatasetDataList;
+      'pages.facts-page': PagesFactsPage;
     }
   }
 }

@@ -839,7 +839,7 @@ export interface ApiDiscoveringBharatDiscoveringBharat
   info: {
     singularName: 'discovering-bharat';
     pluralName: 'discovering-bharats';
-    displayName: 'Discovering_Bharat';
+    displayName: 'Discovering Bharat';
     description: '';
   };
   options: {
@@ -941,6 +941,42 @@ export interface ApiExploreLandingExploreLanding extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::explore-landing.explore-landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFactIndiaFactIndia extends Schema.CollectionType {
+  collectionName: 'fact_indias';
+  info: {
+    singularName: 'fact-india';
+    pluralName: 'fact-indias';
+    displayName: 'Facts of India';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    banner_img: Attribute.Media;
+    description: Attribute.Text;
+    pages: Attribute.Component<'pages.facts-page', true>;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::fact-india.fact-india',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::fact-india.fact-india',
       'oneToOne',
       'admin::user'
     > &
@@ -1812,6 +1848,7 @@ declare module '@strapi/types' {
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
       'api::explore-bharat.explore-bharat': ApiExploreBharatExploreBharat;
       'api::explore-landing.explore-landing': ApiExploreLandingExploreLanding;
+      'api::fact-india.fact-india': ApiFactIndiaFactIndia;
       'api::image.image': ApiImageImage;
       'api::initiative.initiative': ApiInitiativeInitiative;
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;

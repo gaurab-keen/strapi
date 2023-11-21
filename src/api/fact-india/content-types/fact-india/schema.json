@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "discovering_bharats",
+  "collectionName": "fact_indias",
   "info": {
-    "singularName": "discovering-bharat",
-    "pluralName": "discovering-bharats",
-    "displayName": "Discovering Bharat",
+    "singularName": "fact-india",
+    "pluralName": "fact-indias",
+    "displayName": "Facts of India",
     "description": ""
   },
   "options": {
@@ -15,7 +15,7 @@
     "title": {
       "type": "string"
     },
-    "homepage_img": {
+    "banner_img": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -23,19 +23,13 @@
         "images"
       ]
     },
-    "is_show_homepage": {
-      "type": "boolean",
-      "default": false
+    "description": {
+      "type": "text"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "travel",
-        "profile",
-        "culinary",
-        "produce",
-        "states"
-      ]
+    "pages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pages.facts-page"
     },
     "review": {
       "type": "customField",
