@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "districts",
+  "info": {
+    "singularName": "district",
+    "pluralName": "districts",
+    "displayName": "Districts",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "lgd_code": {
+      "type": "integer"
+    },
+    "state_id": {
+      "type": "string"
+    },
+    "lgd_short_name": {
+      "type": "string"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
+    },
+    "state_dist": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location-state-dist.location-state-dist",
+      "inversedBy": "districts"
+    }
+  }
+}

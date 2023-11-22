@@ -97,10 +97,6 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
-    },
-    "state_district": {
-      "type": "customField",
-      "customField": "plugin::npistrapi.npistrapi1"
     }
   }
 }

@@ -15,6 +15,13 @@
     },
     "page_content": {
       "type": "richtext"
+    },
+    "page_icon": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

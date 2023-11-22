@@ -25,5 +25,7 @@ module.exports = {
     pathWhosWhoMain: 'api::whos-who-main-section.whos-who-main-section',
     pathExplore: 'api::explore-bharat.explore-bharat',
     pathExploreLanding: 'api::explore-landing.explore-landing',
-    pathFacts: 'api::fact-india.fact-india'
+    pathFacts: 'api::fact-india.fact-india',
+    pathDepartment: 'api::ug-department.ug-department',
+    pathDistrict: 'api::district.district'
 };

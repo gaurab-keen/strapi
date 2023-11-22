@@ -15,15 +15,28 @@
     "title": {
       "type": "string"
     },
-    "services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::service.service",
-      "mappedBy": "state_dists"
-    },
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "code": {
+      "type": "string"
+    },
+    "lgd_code": {
+      "type": "integer"
+    },
+    "state_or_ut": {
+      "type": "enumeration",
+      "enum": [
+        "S",
+        "U"
+      ]
+    },
+    "districts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::district.district",
+      "mappedBy": "state_dist"
     }
   }
 }

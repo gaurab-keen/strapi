@@ -8,7 +8,7 @@ module.exports = {
     const path = require("path");
     const filePath = path.join(__dirname, "sampleData.xlsx");
     const workbook = xlsx.readFile(filePath);
-    const sheetName = workbook.SheetNames[3];
+    const sheetName = workbook.SheetNames[1];
 
     try {
       const sheetData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
@@ -31,9 +31,12 @@ module.exports = {
         console.log("Updated_at>>>>>", newUpdateTime);
 
         const datamodified = {
-          title: data['title'],
+          title: data['_source/title/en'],
           cmd_id: data['_id'],
           is_dept: 0,
+          created_at: newCreateTime,
+          updated_at: newUpdateTime,
+          published_at: newUpdateTime,
           review:"Approved",
           created_by_id: 1,
           updated_by_id: 1,

@@ -86,6 +86,7 @@ export interface PagesFactsPage extends Schema.Component {
     page_title: Attribute.String;
     is_visible: Attribute.Boolean;
     page_content: Attribute.RichText;
+    page_icon: Attribute.Media;
   };
 }
 

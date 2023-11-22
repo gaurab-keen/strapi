@@ -78,12 +78,6 @@
       "target": "api::category-group.category-group",
       "inversedBy": "services"
     },
-    "state_dists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::location-state-dist.location-state-dist",
-      "inversedBy": "services"
-    },
     "is_show_homepage": {
       "type": "boolean"
     },

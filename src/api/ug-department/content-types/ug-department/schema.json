@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ug_departments",
+  "info": {
+    "singularName": "ug-department",
+    "pluralName": "ug-departments",
+    "displayName": "Departments (UG)",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cmd_id": {
+      "type": "string"
+    },
+    "min_id": {
+      "type": "string"
+    },
+    "is_dept": {
+      "type": "boolean"
+    },
+    "review": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi"
+    },
+    "ministry_dept": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::central-ministry-dept.central-ministry-dept",
+      "inversedBy": "departments_ugs"
+    }
+  }
+}

@@ -717,8 +717,6 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
     is_show_homepage: Attribute.Boolean;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    state_district: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi1'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -751,13 +749,19 @@ export interface ApiCentralMinistryDeptCentralMinistryDept
   };
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
-    icon_scroll: Attribute.Media;
+    min_icon: Attribute.Media;
     is_dept: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     cmd_id: Attribute.String;
+    icon_url: Attribute.String;
+    departments_ugs: Attribute.Relation<
+      'api::central-ministry-dept.central-ministry-dept',
+      'oneToMany',
+      'api::ug-department.ug-department'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -872,6 +876,47 @@ export interface ApiDiscoveringBharatDiscoveringBharat
   };
 }
 
+export interface ApiDistrictDistrict extends Schema.CollectionType {
+  collectionName: 'districts';
+  info: {
+    singularName: 'district';
+    pluralName: 'districts';
+    displayName: 'Districts';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    lgd_code: Attribute.Integer;
+    state_id: Attribute.String;
+    lgd_short_name: Attribute.String;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    state_dist: Attribute.Relation<
+      'api::district.district',
+      'manyToOne',
+      'api::location-state-dist.location-state-dist'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::district.district',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::district.district',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiExploreBharatExploreBharat extends Schema.CollectionType {
   collectionName: 'explore_bharats';
   info: {
@@ -917,7 +962,7 @@ export interface ApiExploreLandingExploreLanding extends Schema.CollectionType {
   info: {
     singularName: 'explore-landing';
     pluralName: 'explore-landings';
-    displayName: 'Explore Landing';
+    displayName: 'Explore Landings';
     description: '';
   };
   options: {
@@ -1145,13 +1190,16 @@ export interface ApiLocationStateDistLocationStateDist
   };
   attributes: {
     title: Attribute.String;
-    services: Attribute.Relation<
-      'api::location-state-dist.location-state-dist',
-      'manyToMany',
-      'api::service.service'
-    >;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    code: Attribute.String;
+    lgd_code: Attribute.Integer;
+    state_or_ut: Attribute.Enumeration<['S', 'U']>;
+    districts: Attribute.Relation<
+      'api::location-state-dist.location-state-dist',
+      'oneToMany',
+      'api::district.district'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1328,11 +1376,6 @@ export interface ApiServiceService extends Schema.CollectionType {
       'api::service.service',
       'manyToMany',
       'api::category-group.category-group'
-    >;
-    state_dists: Attribute.Relation<
-      'api::service.service',
-      'manyToMany',
-      'api::location-state-dist.location-state-dist'
     >;
     is_show_homepage: Attribute.Boolean;
     homepage_img: Attribute.Media;
@@ -1596,6 +1639,47 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
   };
 }
 
+export interface ApiUgDepartmentUgDepartment extends Schema.CollectionType {
+  collectionName: 'ug_departments';
+  info: {
+    singularName: 'ug-department';
+    pluralName: 'ug-departments';
+    displayName: 'Departments (UG)';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    cmd_id: Attribute.String;
+    min_id: Attribute.String;
+    is_dept: Attribute.Boolean;
+    review: Attribute.String &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    ministry_dept: Attribute.Relation<
+      'api::ug-department.ug-department',
+      'manyToOne',
+      'api::central-ministry-dept.central-ministry-dept'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ug-department.ug-department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ug-department.ug-department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiWhoSWhoListWhoSWhoList extends Schema.CollectionType {
   collectionName: 'who_s_who_lists';
   info: {
@@ -1846,6 +1930,7 @@ declare module '@strapi/types' {
       'api::central-ministry-dept.central-ministry-dept': ApiCentralMinistryDeptCentralMinistryDept;
       'api::council-of-minister.council-of-minister': ApiCouncilOfMinisterCouncilOfMinister;
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
+      'api::district.district': ApiDistrictDistrict;
       'api::explore-bharat.explore-bharat': ApiExploreBharatExploreBharat;
       'api::explore-landing.explore-landing': ApiExploreLandingExploreLanding;
       'api::fact-india.fact-india': ApiFactIndiaFactIndia;
@@ -1862,6 +1947,7 @@ declare module '@strapi/types' {
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::spotlight.spotlight': ApiSpotlightSpotlight;
       'api::state-dept-org.state-dept-org': ApiStateDeptOrgStateDeptOrg;
+      'api::ug-department.ug-department': ApiUgDepartmentUgDepartment;
       'api::who-s-who-list.who-s-who-list': ApiWhoSWhoListWhoSWhoList;
       'api::who-s-who-vvip.who-s-who-vvip': ApiWhoSWhoVvipWhoSWhoVvip;
       'api::whos-who.whos-who': ApiWhosWhoWhosWho;
