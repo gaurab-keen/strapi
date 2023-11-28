@@ -38,12 +38,6 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
-    },
-    "services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::service.service",
-      "inversedBy": "state_dept_orgs"
     }
   }
 }

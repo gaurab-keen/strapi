@@ -80,12 +80,6 @@
       "pluginOptions": {},
       "type": "integer"
     },
-    "services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::service.service",
-      "mappedBy": "category_list"
-    },
     "category_list": {
       "type": "relation",
       "relation": "oneToOne",

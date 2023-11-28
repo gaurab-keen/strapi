@@ -37,18 +37,6 @@
       "type": "text",
       "required": true
     },
-    "service_maturity": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::service-maturity.service-maturity",
-      "inversedBy": "services"
-    },
-    "owner": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::service-type.service-type",
-      "inversedBy": "services"
-    },
     "description": {
       "pluginOptions": {},
       "type": "text",
@@ -70,12 +58,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::interaction-type.interaction-type",
-      "inversedBy": "services"
-    },
-    "category_list": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category-group.category-group",
       "inversedBy": "services"
     },
     "is_show_homepage": {
@@ -150,16 +132,29 @@
       "type": "string"
     },
     "translation_id": {
-      "type": "biginteger"
+      "type": "integer"
     },
     "service_plus_id": {
-      "type": "biginteger"
+      "type": "integer"
     },
-    "state_dept_orgs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::state-dept-org.state-dept-org",
-      "mappedBy": "services"
+    "maturity": {
+      "type": "enumeration",
+      "enum": [
+        "Partially Online",
+        "Information",
+        "Fully Online"
+      ]
+    },
+    "owner": {
+      "type": "enumeration",
+      "enum": [
+        "Central",
+        "State"
+      ]
+    },
+    "states_dist": {
+      "type": "customField",
+      "customField": "plugin::npistrapi.npistrapi2"
     }
   }
 }

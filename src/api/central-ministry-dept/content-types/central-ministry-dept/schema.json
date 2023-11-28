@@ -39,12 +39,6 @@
     },
     "icon_url": {
       "type": "string"
-    },
-    "departments_ugs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::ug-department.ug-department",
-      "mappedBy": "ministry_dept"
     }
   }
 }

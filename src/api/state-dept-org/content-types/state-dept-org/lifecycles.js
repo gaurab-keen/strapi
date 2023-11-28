@@ -5,7 +5,7 @@ const {pathStateDept} = require('../../../commonFile/modelPathList');
 
 module.exports = {
      beforeCreate: async ({ params }) => {
-      strapi.log.debug("value under params "+JSON.stringify(params))
+      // strapi.log.debug("value under params "+JSON.stringify(params))
      },
      beforeUpdate: async ({params})=>{
       const data=await getReviewDetailsById(pathStateDept,params.where.id); 

@@ -16,5 +16,13 @@ module.exports = [
       policies: [],
     },
   },
+  {
+    method: "GET",
+    path: "/getstates/",
+    handler: "myStates.getStateData",
+    config: {
+      policies: [],
+    },
+  },
  
 ];

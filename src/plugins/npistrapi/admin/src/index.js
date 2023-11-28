@@ -89,7 +89,7 @@ export default {
                 },
                 components: {
                 Input: async() =>
-                import ( /* webpackChunkName: "input-component" */ './components/NestedSelectWithSearch'),
+                import ( /* webpackChunkName: "input-component" */ './components/NestedDropdown'),
                 
                 },
                 options: {},

@@ -23,9 +23,6 @@
         "images"
       ]
     },
-    "description": {
-      "type": "text"
-    },
     "pages": {
       "type": "component",
       "repeatable": true,
@@ -34,6 +31,9 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

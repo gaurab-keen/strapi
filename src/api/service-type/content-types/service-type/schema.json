@@ -15,12 +15,6 @@
     "name": {
       "type": "string"
     },
-    "services": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::service.service",
-      "mappedBy": "owner"
-    },
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"

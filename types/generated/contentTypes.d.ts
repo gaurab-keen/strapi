@@ -704,11 +704,6 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
         maxLength: 250;
       }>;
     display_order: Attribute.Integer;
-    services: Attribute.Relation<
-      'api::category-group.category-group',
-      'manyToMany',
-      'api::service.service'
-    >;
     category_list: Attribute.Relation<
       'api::category-group.category-group',
       'oneToOne',
@@ -757,11 +752,6 @@ export interface ApiCentralMinistryDeptCentralMinistryDept
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     cmd_id: Attribute.String;
     icon_url: Attribute.String;
-    departments_ugs: Attribute.Relation<
-      'api::central-ministry-dept.central-ministry-dept',
-      'oneToMany',
-      'api::ug-department.ug-department'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -894,11 +884,6 @@ export interface ApiDistrictDistrict extends Schema.CollectionType {
     lgd_short_name: Attribute.String;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    state_dist: Attribute.Relation<
-      'api::district.district',
-      'manyToOne',
-      'api::location-state-dist.location-state-dist'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1007,10 +992,10 @@ export interface ApiFactIndiaFactIndia extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     banner_img: Attribute.Media;
-    description: Attribute.Text;
     pages: Attribute.Component<'pages.facts-page', true>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    description: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1142,40 +1127,6 @@ export interface ApiInteractionTypeInteractionType
   };
 }
 
-export interface ApiLandingExploreLandingExplore extends Schema.CollectionType {
-  collectionName: 'landing_explores';
-  info: {
-    singularName: 'landing-explore';
-    pluralName: 'landing-explores';
-    displayName: 'Landing Explore';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    cards: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
-    subtitle: Attribute.Text;
-    homepage_img: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing-explore.landing-explore',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing-explore.landing-explore',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiLocationStateDistLocationStateDist
   extends Schema.CollectionType {
   collectionName: 'location_state_dists';
@@ -1195,11 +1146,6 @@ export interface ApiLocationStateDistLocationStateDist
     code: Attribute.String;
     lgd_code: Attribute.Integer;
     state_or_ut: Attribute.Enumeration<['S', 'U']>;
-    districts: Attribute.Relation<
-      'api::location-state-dist.location-state-dist',
-      'oneToMany',
-      'api::district.district'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1346,16 +1292,6 @@ export interface ApiServiceService extends Schema.CollectionType {
     power_by_service_plus: Attribute.Boolean;
     url_is_on_gov_domain: Attribute.Boolean & Attribute.Required;
     keywords: Attribute.Text & Attribute.Required;
-    service_maturity: Attribute.Relation<
-      'api::service.service',
-      'manyToOne',
-      'api::service-maturity.service-maturity'
-    >;
-    owner: Attribute.Relation<
-      'api::service.service',
-      'manyToOne',
-      'api::service-type.service-type'
-    >;
     description: Attribute.Text & Attribute.Required;
     people_group: Attribute.Relation<
       'api::service.service',
@@ -1371,11 +1307,6 @@ export interface ApiServiceService extends Schema.CollectionType {
       'api::service.service',
       'manyToMany',
       'api::interaction-type.interaction-type'
-    >;
-    category_list: Attribute.Relation<
-      'api::service.service',
-      'manyToMany',
-      'api::category-group.category-group'
     >;
     is_show_homepage: Attribute.Boolean;
     homepage_img: Attribute.Media;
@@ -1418,13 +1349,14 @@ export interface ApiServiceService extends Schema.CollectionType {
     in_service_plus: Attribute.Boolean;
     sp_url: Attribute.Text;
     translation_status: Attribute.String;
-    translation_id: Attribute.BigInteger;
-    service_plus_id: Attribute.BigInteger;
-    state_dept_orgs: Attribute.Relation<
-      'api::service.service',
-      'manyToMany',
-      'api::state-dept-org.state-dept-org'
+    translation_id: Attribute.Integer;
+    service_plus_id: Attribute.Integer;
+    maturity: Attribute.Enumeration<
+      ['Partially Online', 'Information', 'Fully Online']
     >;
+    owner: Attribute.Enumeration<['Central', 'State']>;
+    states_dist: Attribute.JSON &
+      Attribute.CustomField<'plugin::npistrapi.npistrapi2'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1497,11 +1429,6 @@ export interface ApiServiceMaturityServiceMaturity
   };
   attributes: {
     name: Attribute.String;
-    services: Attribute.Relation<
-      'api::service-maturity.service-maturity',
-      'oneToMany',
-      'api::service.service'
-    >;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
@@ -1535,11 +1462,6 @@ export interface ApiServiceTypeServiceType extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    services: Attribute.Relation<
-      'api::service-type.service-type',
-      'oneToMany',
-      'api::service.service'
-    >;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     createdAt: Attribute.DateTime;
@@ -1616,11 +1538,6 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
       Attribute.DefaultTo<'S'>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    services: Attribute.Relation<
-      'api::state-dept-org.state-dept-org',
-      'manyToMany',
-      'api::service.service'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1657,11 +1574,6 @@ export interface ApiUgDepartmentUgDepartment extends Schema.CollectionType {
     is_dept: Attribute.Boolean;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    ministry_dept: Attribute.Relation<
-      'api::ug-department.ug-department',
-      'manyToOne',
-      'api::central-ministry-dept.central-ministry-dept'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1937,7 +1849,6 @@ declare module '@strapi/types' {
       'api::image.image': ApiImageImage;
       'api::initiative.initiative': ApiInitiativeInitiative;
       'api::interaction-type.interaction-type': ApiInteractionTypeInteractionType;
-      'api::landing-explore.landing-explore': ApiLandingExploreLandingExplore;
       'api::location-state-dist.location-state-dist': ApiLocationStateDistLocationStateDist;
       'api::menu-data.menu-data': ApiMenuDataMenuData;
       'api::people-group.people-group': ApiPeopleGroupPeopleGroup;

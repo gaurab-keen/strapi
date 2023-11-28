@@ -27,12 +27,6 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
-    },
-    "state_dist": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::location-state-dist.location-state-dist",
-      "inversedBy": "districts"
     }
   }
 }

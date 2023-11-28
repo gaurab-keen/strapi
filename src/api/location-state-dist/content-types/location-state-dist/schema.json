@@ -31,12 +31,6 @@
         "S",
         "U"
       ]
-    },
-    "districts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::district.district",
-      "mappedBy": "state_dist"
     }
   }
 }

@@ -1,0 +1,92 @@
+[
+  {
+  "label": "Madhya Pradesh",
+  "value": "MP",
+  "children": [
+    {
+      "label": "Chhatarpur",
+      "value": "chhatarpur",
+      "children": [
+        {
+          "label": "Khajuraho",
+          "value": "khajuraho"
+        }
+      ]
+    },
+    {
+      "label": "Bhopal",
+      "value": "bhopal"
+    },
+    {
+      "label": "Indore",
+      "value": "indore"
+    },
+    {
+      "label": "Jabalpur",
+      "value": "jabalpur"
+    }
+  ]
+},
+{
+  "label": "Punjab",
+  "value": "PJ",
+  "children": [
+    {
+      "label": "Amritsar",
+      "value": "amritsar"
+    },
+    {
+      "label": "Bhatinda",
+      "value": "bhatinda"
+    },
+    {
+      "label": "Chandigarh",
+      "value": "chandigarh"
+    },
+    {
+      "label": "Jalandhar",
+      "value": "jalandhar"
+    },
+    {
+      "label": "Pathankot",
+      "value": "pathankot"
+    }
+  ]
+},
+{
+  "label": "Andhra Pradesh",
+  "value": "AP",
+  "children": [
+    {
+      "label": "Hyderabad",
+      "value": "hyderabad"
+    },
+    {
+      "label": "Warangal",
+      "value": "warangal"
+    },
+    {
+      "label": "Vijaywada",
+      "value": "vijaywada"
+    }
+  ]
+},
+{
+  "label": "Uttar Pradesh",
+  "value": "UP",
+  "children": [
+    {
+      "label": "Lucknow",
+      "value": "lucknow"
+    },
+    {
+      "label": "Kanpur",
+      "value": "kanpur"
+    },
+    {
+      "label": "Banaras",
+      "value": "Banaras"
+    }
+  ]
+}
+]
