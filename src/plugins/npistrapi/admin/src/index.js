@@ -96,8 +96,6 @@ export default {
                 });  
   },
 
-  
-
   bootstrap(app) {},
   async registerTrads({ locales }) {
     const importedTrads = await Promise.all(

@@ -47,18 +47,18 @@ module.exports = {
           console.log("Updated_at>>>>>", newUpdateTime);
 
           const datamodified = {
-            title: data.title,
+            title: data["title"],
+            state_id: data["_id"],
             lgd_code: data["lgd_code"],
-            state_code: data["state_id"],
-            lgd_short_name: data["lgd_short_name"],
+            code: data["code"],
+            state_or_ut: data["state_or_ut"],
             review: "Approved",
-            district_id: data["_id"],
             published_at: formattedTimestamp,
           };
 
           // Create a new record
           const createdRecord = await strapi
-            .query('api::district.district')
+            .query('api::location-state-dist.location-state-dist')
             .create({ data: datamodified });
 
           // Log the created record for verification
