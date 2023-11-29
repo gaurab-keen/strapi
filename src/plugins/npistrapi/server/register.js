@@ -7,11 +7,11 @@ module.exports = ({ strapi }) => {
     plugin: 'npistrapi',
     type: 'string',
   });
-  strapi.customFields.register({
-    name: 'npistrapi1',
-    plugin: 'npistrapi',
-    type: 'string',
-  });
+  // strapi.customFields.register({
+  //   name: 'npistrapi1',
+  //   plugin: 'npistrapi',
+  //   type: 'string',
+  // });
   strapi.customFields.register({
     name: 'npistrapi2',
     plugin: 'npistrapi',

@@ -1,0 +1,52 @@
+.multi-dropdown {
+  width: 300px;
+  position: relative;
+  display: inline-block;
+  margin: 10px; /* Add margin for spacing */
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-content input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.dropdown-content label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for nested options */
+.dropdown-content > div {
+  margin-left: 15px; /* Adjusted margin for child elements */
+}
+
+/* Style for checkboxes */
+.dropdown-content input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Style for the button */
+h1 {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.selected-values {
+  margin-top: 20px;
+}

@@ -880,10 +880,16 @@ export interface ApiDistrictDistrict extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     lgd_code: Attribute.Integer;
-    state_id: Attribute.String;
+    state_code: Attribute.String;
     lgd_short_name: Attribute.String;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    state_dist: Attribute.Relation<
+      'api::district.district',
+      'manyToOne',
+      'api::location-state-dist.location-state-dist'
+    >;
+    district_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1146,6 +1152,12 @@ export interface ApiLocationStateDistLocationStateDist
     code: Attribute.String;
     lgd_code: Attribute.Integer;
     state_or_ut: Attribute.Enumeration<['S', 'U']>;
+    state_id: Attribute.String;
+    districts: Attribute.Relation<
+      'api::location-state-dist.location-state-dist',
+      'oneToMany',
+      'api::district.district'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -7,7 +7,7 @@ module.exports = {
     const path = require("path");
     const filePath = path.join(__dirname, "sampleData.xlsx");
     const workbook = xlsx.readFile(filePath);
-    const sheetName = workbook.SheetNames[3];
+    const sheetName = workbook.SheetNames[2];
 
     try {
       const sheetData = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
@@ -47,16 +47,18 @@ module.exports = {
           console.log("Updated_at>>>>>", newUpdateTime);
 
           const datamodified = {
-            title: data["title"],
-            cmd_id: data["_id"],
-            is_dept: 0,
+            title: data.title,
+            lgd_code: data["lgd_code"],
+            state_code: data["state_id"],
+            lgd_short_name: data["lgd_short_name"],
             review: "Approved",
+            district_id: data["_id"],
             published_at: formattedTimestamp,
           };
 
           // Create a new record
           const createdRecord = await strapi
-            .query("api::central-ministry-dept.central-ministry-dept")
+            .query('api::district.district')
             .create({ data: datamodified });
 
           // Log the created record for verification

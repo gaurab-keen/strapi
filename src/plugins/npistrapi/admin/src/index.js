@@ -54,26 +54,26 @@ export default {
         },
         options: {},
         });  
-        app.customFields.register(
-          {
-            name: "npistrapi1",
-            pluginId: "npistrapi",
-            type: "string",
-            intlLabel: {
-            id: "npistrapi.label",
-            defaultMessage: "State District",
-            },
-            intlDescription: {
-            id: "npistrapi1.description",
-            defaultMessage: "State wise District selection",
-            },
-            components: {
-            Input: async() =>
-            import ( /* webpackChunkName: "input-component" */ './components/CheckBoxList'),
+        // app.customFields.register(
+        //   {
+        //     name: "npistrapi1",
+        //     pluginId: "npistrapi",
+        //     type: "string",
+        //     intlLabel: {
+        //     id: "npistrapi.label",
+        //     defaultMessage: "State District",
+        //     },
+        //     intlDescription: {
+        //     id: "npistrapi1.description",
+        //     defaultMessage: "State wise District selection",
+        //     },
+        //     components: {
+        //     Input: async() =>
+        //     import ( /* webpackChunkName: "input-component" */ './components/CheckBoxList'),
             
-            },
-            options: {},
-            });   
+        //     },
+        //     options: {},
+        //     });   
             app.customFields.register(
               {
                 name: "npistrapi2",
@@ -81,7 +81,7 @@ export default {
                 type: "json",
                 intlLabel: {
                 id: "npistrapi2.label",
-                defaultMessage: "Nested",
+                defaultMessage: "State Districts",
                 },
                 intlDescription: {
                 id: "npistrapi2.description",
@@ -89,7 +89,7 @@ export default {
                 },
                 components: {
                 Input: async() =>
-                import ( /* webpackChunkName: "input-component" */ './components/NestedDropdown'),
+                import ( /* webpackChunkName: "input-component" */ './components/StateDistricts'),
                 
                 },
                 options: {},

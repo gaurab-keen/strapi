@@ -18,7 +18,7 @@
     "lgd_code": {
       "type": "integer"
     },
-    "state_id": {
+    "state_code": {
       "type": "string"
     },
     "lgd_short_name": {
@@ -27,6 +27,15 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "state_dist": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::location-state-dist.location-state-dist",
+      "inversedBy": "districts"
+    },
+    "district_id": {
+      "type": "string"
     }
   }
 }
