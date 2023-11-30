@@ -107,33 +107,6 @@
       ],
       "default": "English"
     },
-    "listing_page": {
-      "type": "boolean"
-    },
-    "form_available": {
-      "type": "boolean"
-    },
-    "login_required": {
-      "type": "boolean"
-    },
-    "in_UMANG": {
-      "type": "boolean"
-    },
-    "UMANG_url": {
-      "type": "text"
-    },
-    "in_service_plus": {
-      "type": "boolean"
-    },
-    "sp_url": {
-      "type": "text"
-    },
-    "translation_status": {
-      "type": "string"
-    },
-    "translation_id": {
-      "type": "integer"
-    },
     "service_plus_id": {
       "type": "integer"
     },

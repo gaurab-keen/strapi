@@ -58,7 +58,7 @@ module.exports = {
 
           const datamodified = {
             title: data.title,
-            id: index,                        //modifying the id of strapi DB with the index of data
+            id: index+1,                        //modifying the id of strapi DB with the index of data
             lgd_code: data["lgd_code"],
             state_code: data["state_id"],
             lgd_short_name: data["lgd_short_name"],

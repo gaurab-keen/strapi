@@ -1353,15 +1353,6 @@ export interface ApiServiceService extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'English'>;
-    listing_page: Attribute.Boolean;
-    form_available: Attribute.Boolean;
-    login_required: Attribute.Boolean;
-    in_UMANG: Attribute.Boolean;
-    UMANG_url: Attribute.Text;
-    in_service_plus: Attribute.Boolean;
-    sp_url: Attribute.Text;
-    translation_status: Attribute.String;
-    translation_id: Attribute.Integer;
     service_plus_id: Attribute.Integer;
     maturity: Attribute.Enumeration<
       ['Partially Online', 'Information', 'Fully Online']
