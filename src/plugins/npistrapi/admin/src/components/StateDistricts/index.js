@@ -172,8 +172,7 @@ import "./MultiLevelDropdown.css"; // Import your CSS file for styling
 
 //     setSelectedValues(updatedSelectedValues);
 //   };
-
-// import React, { useState,useEffect } from 'react';
+//65.21.120.112:1340/api/getDistrictData } from 'react';
 // import './MultiLevelDropdown.css'; // Import your CSS file for styling
 
 // const initialOptions = [
@@ -251,7 +250,6 @@ import "./MultiLevelDropdown.css"; // Import your CSS file for styling
 //   },
 // ];
 
-
 function MultiLevelDropdown({
   description,
   disabled,
@@ -261,15 +259,15 @@ function MultiLevelDropdown({
   onChange,
   placeholder,
   required,
-  value
+  value,
 }) {
   const [selectedValues, setSelectedValues] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [states, setStates] = useState([]);
   const { get } = useFetchClient();
   useEffect(() => {
-    if (value!=='null' && value!== undefined) {
+    if (value !== "null" && value !== undefined) {
       console.log("My value " + value);
 
       const parsedValue = JSON.parse(value);
@@ -287,17 +285,17 @@ function MultiLevelDropdown({
   };
 
   useEffect(() => {
-    if(selectedValues!==null){
-      console.log("Use effect call after selection " + JSON.stringify(selectedValues));
+    if (selectedValues !== null) {
+      console.log(
+        "Use effect call after selection " + JSON.stringify(selectedValues)
+      );
       // Additional logic if needed
       // Notify the parent component of the change using the provided 'onChange' function
       onChange({
-        target: { name, value: JSON.stringify(selectedValues), type: 'json' }
+        target: { name, value: JSON.stringify(selectedValues), type: "json" },
       });
     }
-   
   }, [selectedValues]);
-
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -309,16 +307,16 @@ function MultiLevelDropdown({
 
   const handleOptionClick = (value, stateId) => {
     const updatedSelectedValues = [...selectedValues];
-  
+
     const stateIndex = updatedSelectedValues.findIndex(
       (state) => state.id === stateId
     );
-  
+
     if (stateIndex !== -1) {
-      const districtIndex = updatedSelectedValues[stateIndex].districts.findIndex(
-        (district) => district.id === value.id
-      );
-  
+      const districtIndex = updatedSelectedValues[
+        stateIndex
+      ].districts.findIndex((district) => district.id === value.id);
+
       if (districtIndex !== -1) {
         // Remove the district from the selected state if it's present
         updatedSelectedValues[stateIndex].districts.splice(districtIndex, 1);
@@ -341,16 +339,16 @@ function MultiLevelDropdown({
         ],
       });
     }
-  
+
     setSelectedValues(updatedSelectedValues);
   };
-  
+
   const selectChildren = (parentValue, isSelected) => {
     const updatedSelectedValues = [...selectedValues];
     const stateIndex = updatedSelectedValues.findIndex(
       (state) => state.id === parentValue.id
     );
-  
+
     if (isSelected) {
       // Add the selected state if it's not already present
       if (stateIndex === -1) {
@@ -364,14 +362,12 @@ function MultiLevelDropdown({
       } else {
         // Include the previously selected districts from the database
         const selectedDistrictsFromDB = selectedValues[stateIndex].districts;
-        const updatedDistricts = parentValue.districts.map(
-          (option) => {
-            const selectedDistrict = selectedDistrictsFromDB.find(
-              (district) => district.id === option.id
-            );
-            return selectedDistrict || { id: option.id };
-          }
-        );
+        const updatedDistricts = parentValue.districts.map((option) => {
+          const selectedDistrict = selectedDistrictsFromDB.find(
+            (district) => district.id === option.id
+          );
+          return selectedDistrict || { id: option.id };
+        });
         updatedSelectedValues[stateIndex].districts = updatedDistricts;
       }
     } else {
@@ -382,40 +378,41 @@ function MultiLevelDropdown({
         updatedSelectedValues.splice(stateIndex, 1);
       }
     }
-  
+
     setSelectedValues(updatedSelectedValues);
   };
-  
-  
-  
+
   const filteredOptions = states.filter((group) =>
     group.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    console.log("check 5",JSON.stringify(selectedValues)),
-    <div className="multi-dropdown">
-      <h1 onClick={toggleDropdown}>Show State</h1>
-      {isDropdownOpen && (
-        <div className="dropdown-content">
-          <input
-            type="text"
-            placeholder="Search options"
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-          {filteredOptions.map((group) => (
-            <div key={group.id}>
-              <label>
-                <input
-                  type="checkbox"
-                  value={group.title}
-                  checked={selectedValues.some((state) => state.id === group.id)}
-                  onChange={(e) => selectChildren(group, e.target.checked)}
-                />
-                {group.title}
-              </label>
-                  <div style={{ marginLeft: '15px' }}>
+    console.log("check 5", JSON.stringify(selectedValues)),
+    (
+      <div className="multi-dropdown">
+        <h1 onClick={toggleDropdown}>Show State</h1>
+        {isDropdownOpen && (
+          <div className="dropdown-content">
+            <input
+              type="text"
+              placeholder="Search options"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+            {filteredOptions.map((group) => (
+              <div key={group.id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    value={group.title}
+                    checked={selectedValues.some(
+                      (state) => state.id === group.id
+                    )}
+                    onChange={(e) => selectChildren(group, e.target.checked)}
+                  />
+                  {group.title}
+                </label>
+                <div style={{ marginLeft: "15px" }}>
                   {group.districts.map((option) => (
                     <label key={option.id}>
                       <input
@@ -430,20 +427,17 @@ function MultiLevelDropdown({
                         }
                         onChange={() => handleOptionClick(option, group.id)}
                       />
-                {option.title}
-              </label>
-             ))}
-
+                      {option.title}
+                    </label>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
-     
-    </div>
+            ))}
+          </div>
+        )}
+      </div>
+    )
   );
 }
 
 export default MultiLevelDropdown;
-
-

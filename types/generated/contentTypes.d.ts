@@ -750,8 +750,13 @@ export interface ApiCentralMinistryDeptCentralMinistryDept
       Attribute.DefaultTo<false>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    cmd_id: Attribute.String;
+    igod_cmd_id: Attribute.String;
     icon_url: Attribute.String;
+    departments: Attribute.Relation<
+      'api::central-ministry-dept.central-ministry-dept',
+      'oneToMany',
+      'api::ug-department.ug-department'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1572,11 +1577,16 @@ export interface ApiUgDepartmentUgDepartment extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    cmd_id: Attribute.String;
-    min_id: Attribute.String;
+    igod_cmd_id: Attribute.String;
+    ug_min_id: Attribute.String;
     is_dept: Attribute.Boolean;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    ministries: Attribute.Relation<
+      'api::ug-department.ug-department',
+      'manyToOne',
+      'api::central-ministry-dept.central-ministry-dept'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

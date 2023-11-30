@@ -15,10 +15,10 @@
     "title": {
       "type": "string"
     },
-    "cmd_id": {
+    "igod_cmd_id": {
       "type": "string"
     },
-    "min_id": {
+    "ug_min_id": {
       "type": "string"
     },
     "is_dept": {
@@ -27,6 +27,12 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "ministries": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::central-ministry-dept.central-ministry-dept",
+      "inversedBy": "departments"
     }
   }
 }
