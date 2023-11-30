@@ -152,7 +152,7 @@
         "State"
       ]
     },
-    "states_dist": {
+    "state_districts": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi2"
     }

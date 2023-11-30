@@ -884,12 +884,12 @@ export interface ApiDistrictDistrict extends Schema.CollectionType {
     lgd_short_name: Attribute.String;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    district_id: Attribute.String;
     state_dist: Attribute.Relation<
       'api::district.district',
       'manyToOne',
       'api::location-state-dist.location-state-dist'
     >;
-    district_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1152,7 +1152,7 @@ export interface ApiLocationStateDistLocationStateDist
     code: Attribute.String;
     lgd_code: Attribute.Integer;
     state_or_ut: Attribute.Enumeration<['S', 'U']>;
-    state_id: Attribute.String;
+    igod_state_id: Attribute.String;
     districts: Attribute.Relation<
       'api::location-state-dist.location-state-dist',
       'oneToMany',
@@ -1367,7 +1367,7 @@ export interface ApiServiceService extends Schema.CollectionType {
       ['Partially Online', 'Information', 'Fully Online']
     >;
     owner: Attribute.Enumeration<['Central', 'State']>;
-    states_dist: Attribute.JSON &
+    state_districts: Attribute.JSON &
       Attribute.CustomField<'plugin::npistrapi.npistrapi2'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

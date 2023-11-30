@@ -32,7 +32,7 @@
         "U"
       ]
     },
-    "state_id": {
+    "igod_state_id": {
       "type": "string"
     },
     "districts": {

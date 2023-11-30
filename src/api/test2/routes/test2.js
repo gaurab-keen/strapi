@@ -2,8 +2,8 @@ module.exports = {
   routes: [
     {
      method: 'GET',
-     path: '/getDistrictData',
-     handler: 'test.testData',
+     path: '/getStateData',
+     handler: 'test2.testData2',
      config: {
        policies: [],
        middlewares: [],
