@@ -20,7 +20,7 @@ module.exports = {
 
             if(data1.code===data.state_id)
              {
-              state_dist_id=index1;
+              state_dist_id=index1+1;
             }
             })
           if (index == 1) {
