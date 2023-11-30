@@ -59,13 +59,13 @@ module.exports = {
           const datamodified = {
             id: index+1,   //modifying the id of strapi DB with the index of data
             title: data.title,
-            is_dept: 1,
+            is_dept: true,
             ug_min_id: data.ug_min_id,
             review: "Approved",
             igod_cmd_id: data["_id"],
             ministries : cmd_id,
-            created_by_id: 1,
-            updated_by_id: 1,
+            created_by_id: 8,
+            updated_by_id: 9,
             published_at: formattedTimestamp,
           };
 
