@@ -19,7 +19,7 @@
     "url": {
       "type": "string"
     },
-    "WhosWho_type": {
+    "whoswho_type": {
       "type": "enumeration",
       "enum": [
         "President",

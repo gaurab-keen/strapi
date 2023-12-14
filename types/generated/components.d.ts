@@ -75,6 +75,20 @@ export interface DatasetDataList extends Schema.Component {
   };
 }
 
+export interface PagesChiefsComp extends Schema.Component {
+  collectionName: 'components_pages_chiefs_comps';
+  info: {
+    displayName: 'chiefs _comp';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String;
+    description: Attribute.Blocks;
+    sub_heading: Attribute.String;
+  };
+}
+
 export interface PagesFactsPage extends Schema.Component {
   collectionName: 'components_pages_facts_pages';
   info: {
@@ -98,6 +112,7 @@ declare module '@strapi/types' {
       'card-data.cards': CardDataCards;
       'card-data.explore-card': CardDataExploreCard;
       'dataset.data-list': DatasetDataList;
+      'pages.chiefs-comp': PagesChiefsComp;
       'pages.facts-page': PagesFactsPage;
     }
   }
