@@ -16,7 +16,7 @@
       "type": "string",
       "required": true
     },
-    "WhosWho_type": {
+    "whoswho_type": {
       "type": "enumeration",
       "enum": [
         "President",

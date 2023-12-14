@@ -918,7 +918,7 @@ export interface ApiExploreBharatExploreBharat extends Schema.CollectionType {
   info: {
     singularName: 'explore-bharat';
     pluralName: 'explore-bharats';
-    displayName: 'Explore Bharat';
+    displayName: 'Explore Bharat : Landing page';
     description: '';
   };
   options: {
@@ -958,7 +958,7 @@ export interface ApiExploreLandingExploreLanding extends Schema.CollectionType {
   info: {
     singularName: 'explore-landing';
     pluralName: 'explore-landings';
-    displayName: 'Explore Landings';
+    displayName: 'Explore Bharat: Leaf pages';
     description: '';
   };
   options: {
@@ -1030,7 +1030,7 @@ export interface ApiImageImage extends Schema.CollectionType {
   info: {
     singularName: 'image';
     pluralName: 'images';
-    displayName: 'Images';
+    displayName: 'Home Images';
     description: '';
   };
   options: {
@@ -1065,7 +1065,7 @@ export interface ApiInitiativeInitiative extends Schema.CollectionType {
   info: {
     singularName: 'initiative';
     pluralName: 'initiatives';
-    displayName: 'Initiative';
+    displayName: 'Initiatives';
     description: '';
   };
   options: {
@@ -1186,7 +1186,7 @@ export interface ApiMenuDataMenuData extends Schema.CollectionType {
   info: {
     singularName: 'menu-data';
     pluralName: 'menu-datas';
-    displayName: 'Menu data';
+    displayName: 'Home Menu List';
     description: '';
   };
   options: {
@@ -1657,7 +1657,7 @@ export interface ApiWhoSWhoVvipWhoSWhoVvip extends Schema.CollectionType {
   attributes: {
     title: Attribute.String & Attribute.Required;
     url: Attribute.String;
-    WhosWho_type: Attribute.Enumeration<
+    whoswho_type: Attribute.Enumeration<
       [
         'President',
         'Vice-President',
@@ -1738,7 +1738,7 @@ export interface ApiWhosWhoWhosWho extends Schema.CollectionType {
   info: {
     singularName: 'whos-who';
     pluralName: 'whos-whos';
-    displayName: 'Chiefs of India';
+    displayName: "Who'sWho Landings";
     description: '';
   };
   options: {
@@ -1748,20 +1748,19 @@ export interface ApiWhosWhoWhosWho extends Schema.CollectionType {
     updatedBy_email: Attribute.String;
     updatedBy_name: Attribute.String;
     title: Attribute.String & Attribute.Required;
-    text_format: Attribute.Enumeration<['Full HTML', 'Plain Text']>;
-    name: Attribute.String & Attribute.Unique;
-    homepage_img: Attribute.Media;
-    bg_photo: Attribute.Media;
-    facebook_url: Attribute.String & Attribute.Unique;
-    x_url: Attribute.String & Attribute.Unique;
-    phone: Attribute.String & Attribute.Unique;
-    education: Attribute.Text;
-    career: Attribute.Text;
-    contact_details: Attribute.Text;
-    body: Attribute.Text;
+    name: Attribute.String;
+    img: Attribute.Media;
+    facebook_url: Attribute.String;
+    x_url: Attribute.String;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
     is_show_homepage: Attribute.Boolean;
+    designation: Attribute.String;
+    url: Attribute.String;
+    page_content: Attribute.Component<'pages.chiefs-comp', true>;
+    whoswho_type: Attribute.Enumeration<
+      ['President', 'Vice President', 'Council of Ministers']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1794,7 +1793,7 @@ export interface ApiWhosWhoMainSectionWhosWhoMainSection
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    WhosWho_type: Attribute.Enumeration<
+    whoswho_type: Attribute.Enumeration<
       [
         'President',
         'Vice-President',

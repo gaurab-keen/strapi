@@ -4,7 +4,7 @@
   "info": {
     "singularName": "whos-who",
     "pluralName": "whos-whos",
-    "displayName": "Chiefs of India",
+    "displayName": "Who'sWho Landings",
     "description": ""
   },
   "options": {
@@ -24,26 +24,11 @@
       "type": "string",
       "required": true
     },
-    "text_format": {
-      "type": "enumeration",
-      "enum": [
-        "Full HTML",
-        "Plain Text"
-      ]
-    },
     "name": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
-    "homepage_img": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "bg_photo": {
+    "img": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -53,28 +38,11 @@
     },
     "facebook_url": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
     "x_url": {
       "type": "string",
-      "unique": true
-    },
-    "phone": {
-      "type": "string",
-      "unique": true
-    },
-    "education": {
-      "type": "text"
-    },
-    "career": {
-      "type": "text"
-    },
-    "contact_details": {
-      "type": "text"
-    },
-    "body": {
-      "type": "text",
-      "regex": "^(<(p|div|span|h[1-6]|pre|address|table|thead|tbody|tr|td|ul|ol|li|b|i|u|strong|em|br|hr|blockquote|a|img)(\\s+(class|id|src|alt|href|target)=\"[^\"]*\")*\\s*>([\\s\\S]*?)<\\/\\2\\s*>|\\s*)$"
+      "unique": false
     },
     "review": {
       "type": "customField",
@@ -82,6 +50,25 @@
     },
     "is_show_homepage": {
       "type": "boolean"
+    },
+    "designation": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "page_content": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pages.chiefs-comp"
+    },
+    "whoswho_type": {
+      "type": "enumeration",
+      "enum": [
+        "President",
+        "Vice President",
+        "Council of Ministers"
+      ]
     }
   }
 }
