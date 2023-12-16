@@ -20,6 +20,12 @@
     },
     "visibility": {
       "type": "boolean"
+    },
+    "color_code": {
+      "type": "string"
+    },
+    "color_gradient": {
+      "type": "string"
     }
   }
 }

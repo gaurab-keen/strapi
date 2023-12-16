@@ -689,29 +689,17 @@ export interface ApiCategoryGroupCategoryGroup extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.Text & Attribute.Required & Attribute.Unique;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 1000;
-      }>;
     icon_home: Attribute.Media;
     icon_inner: Attribute.Media;
     banner_inner: Attribute.Media;
-    youtube_code: Attribute.String;
-    video_caption: Attribute.String;
-    title_hi: Attribute.String & Attribute.Unique;
-    short_description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 250;
-      }>;
     display_order: Attribute.Integer;
-    category_list: Attribute.Relation<
-      'api::category-group.category-group',
-      'oneToOne',
-      'api::category-group.category-group'
-    >;
     is_show_homepage: Attribute.Boolean;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    new_cat_id: Attribute.Integer;
+    new_parent_id: Attribute.Integer;
+    tags: Attribute.Text;
+    parent_cat_id: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

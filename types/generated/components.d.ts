@@ -12,6 +12,7 @@ export interface CardDataCard1 extends Schema.Component {
     subtitle: Attribute.Text;
     img: Attribute.Media;
     visibility: Attribute.Boolean;
+    url: Attribute.String;
   };
 }
 
@@ -26,6 +27,8 @@ export interface CardDataCard2 extends Schema.Component {
     title: Attribute.String;
     img: Attribute.Media;
     visibility: Attribute.Boolean;
+    color_code: Attribute.String;
+    color_gradient: Attribute.String;
   };
 }
 

@@ -18,11 +18,6 @@
       "unique": true,
       "pluginOptions": {}
     },
-    "description": {
-      "pluginOptions": {},
-      "type": "text",
-      "maxLength": 1000
-    },
     "icon_home": {
       "type": "media",
       "multiple": false,
@@ -56,34 +51,9 @@
       ],
       "pluginOptions": {}
     },
-    "youtube_code": {
-      "pluginOptions": {},
-      "type": "string"
-    },
-    "video_caption": {
-      "pluginOptions": {},
-      "type": "string"
-    },
-    "title_hi": {
-      "pluginOptions": {},
-      "type": "string",
-      "required": false,
-      "unique": true
-    },
-    "short_description": {
-      "pluginOptions": {},
-      "type": "text",
-      "maxLength": 250,
-      "required": false
-    },
     "display_order": {
       "pluginOptions": {},
       "type": "integer"
-    },
-    "category_list": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category-group.category-group"
     },
     "is_show_homepage": {
       "type": "boolean"
@@ -91,6 +61,18 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "new_cat_id": {
+      "type": "integer"
+    },
+    "new_parent_id": {
+      "type": "integer"
+    },
+    "tags": {
+      "type": "text"
+    },
+    "parent_cat_id": {
+      "type": "integer"
     }
   }
 }

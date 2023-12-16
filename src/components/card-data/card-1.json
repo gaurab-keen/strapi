@@ -23,6 +23,9 @@
     },
     "visibility": {
       "type": "boolean"
+    },
+    "url": {
+      "type": "string"
     }
   }
 }
