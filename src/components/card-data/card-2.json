@@ -26,6 +26,9 @@
     },
     "color_gradient": {
       "type": "string"
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

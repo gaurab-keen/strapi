@@ -29,6 +29,7 @@ export interface CardDataCard2 extends Schema.Component {
     visibility: Attribute.Boolean;
     color_code: Attribute.String;
     color_gradient: Attribute.String;
+    url: Attribute.String;
   };
 }
 
