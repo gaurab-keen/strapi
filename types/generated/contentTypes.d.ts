@@ -916,7 +916,7 @@ export interface ApiExploreBharatExploreBharat extends Schema.CollectionType {
     title: Attribute.String;
     subtitle: Attribute.Text;
     section: Attribute.Enumeration<
-      ['head', 'travel', 'culinary', 'produce', 'facts']
+      ['head', 'travel', 'culinary', 'produce', 'facts', 'accomodation']
     >;
     show_in_explore: Attribute.Boolean & Attribute.DefaultTo<true>;
     cards_data: Attribute.DynamicZone<['card-data.card-1', 'card-data.card-2']>;
