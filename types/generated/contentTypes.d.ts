@@ -763,63 +763,6 @@ export interface ApiCentralMinistryDeptCentralMinistryDept
   };
 }
 
-export interface ApiCouncilOfMinisterCouncilOfMinister
-  extends Schema.CollectionType {
-  collectionName: 'council_of_ministers';
-  info: {
-    singularName: 'council-of-minister';
-    pluralName: 'council-of-ministers';
-    displayName: 'Council of Ministers';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Title: Attribute.String & Attribute.Required;
-    Profile_image: Attribute.Media;
-    Facebook_URL: Attribute.String;
-    Twitter_URL: Attribute.String;
-    Contact_URL: Attribute.String;
-    Minister_type: Attribute.Enumeration<
-      [
-        'Prime Minister',
-        'Cabinet Minister',
-        'Ministers of State (Independent Charge)',
-        'State Minister'
-      ]
-    > &
-      Attribute.Required;
-    Weight: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 60;
-      }> &
-      Attribute.DefaultTo<1>;
-    Language: Attribute.Enumeration<['Language neutral', 'English']> &
-      Attribute.DefaultTo<'English'>;
-    Body: Attribute.Text;
-    review: Attribute.String &
-      Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::council-of-minister.council-of-minister',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::council-of-minister.council-of-minister',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiDiscoveringBharatDiscoveringBharat
   extends Schema.CollectionType {
   collectionName: 'discovering_bharats';
@@ -1527,13 +1470,14 @@ export interface ApiStateDeptOrgStateDeptOrg extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
-    code: Attribute.String & Attribute.Unique;
+    state_code: Attribute.String & Attribute.Unique;
     lgd_code: Attribute.Integer & Attribute.Unique;
     state_or_ut: Attribute.Enumeration<['S', 'U']> &
       Attribute.Required &
       Attribute.DefaultTo<'S'>;
     review: Attribute.String &
       Attribute.CustomField<'plugin::npistrapi.npistrapi'>;
+    igod_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1747,8 +1691,16 @@ export interface ApiWhosWhoWhosWho extends Schema.CollectionType {
     url: Attribute.String;
     page_content: Attribute.Component<'pages.chiefs-comp', true>;
     whoswho_type: Attribute.Enumeration<
-      ['President', 'Vice President', 'Council of Ministers']
+      [
+        'President of India',
+        'Vice President of India',
+        'Prime Minister of India',
+        'Cabinet Minister',
+        'Ministers of State (Independent Charge)',
+        'State Minister'
+      ]
     >;
+    weight: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1840,7 +1792,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category-group.category-group': ApiCategoryGroupCategoryGroup;
       'api::central-ministry-dept.central-ministry-dept': ApiCentralMinistryDeptCentralMinistryDept;
-      'api::council-of-minister.council-of-minister': ApiCouncilOfMinisterCouncilOfMinister;
       'api::discovering-bharat.discovering-bharat': ApiDiscoveringBharatDiscoveringBharat;
       'api::district.district': ApiDistrictDistrict;
       'api::explore-bharat.explore-bharat': ApiExploreBharatExploreBharat;

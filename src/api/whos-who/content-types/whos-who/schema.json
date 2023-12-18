@@ -65,10 +65,16 @@
     "whoswho_type": {
       "type": "enumeration",
       "enum": [
-        "President",
-        "Vice President",
-        "Council of Ministers"
+        "President of India",
+        "Vice President of India",
+        "Prime Minister of India",
+        "Cabinet Minister",
+        "Ministers of State (Independent Charge)",
+        "State Minister"
       ]
+    },
+    "weight": {
+      "type": "integer"
     }
   }
 }

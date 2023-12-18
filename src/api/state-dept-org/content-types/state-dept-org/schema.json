@@ -17,7 +17,7 @@
       "required": true,
       "unique": true
     },
-    "code": {
+    "state_code": {
       "type": "string",
       "unique": true
     },
@@ -38,6 +38,9 @@
     "review": {
       "type": "customField",
       "customField": "plugin::npistrapi.npistrapi"
+    },
+    "igod_id": {
+      "type": "string"
     }
   }
 }

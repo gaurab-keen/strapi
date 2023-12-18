@@ -5,14 +5,15 @@ const moment = require("moment-timezone");
 module.exports = {
   async testData(ctx) {
     const path = require("path");
-    const filePath = path.join(__dirname, "sampleData.xlsx");
+    const filePath = path.join(__dirname, "../../sampleData.xlsx");
     const workbook = xlsx.readFile(filePath);
-    const stateSheet = workbook.SheetNames[1];
+    const stateSheet = workbook.SheetNames[7];
     const districtSheet = workbook.SheetNames[2];
 
     try {
       const stateData = xlsx.utils.sheet_to_json(workbook.Sheets[stateSheet]);
       const districtData = xlsx.utils.sheet_to_json(workbook.Sheets[districtSheet]);
+      
       const createdRecords = await Promise.all(
         districtData.map(async (data, index) => {
           let state_dist_id = 0;
