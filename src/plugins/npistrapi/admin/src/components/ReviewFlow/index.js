@@ -15,7 +15,10 @@ import {statusText,messageText,colorText,buttonText}from '../CommonFile/index'
     },
     {
       email:'publisher@test.com',
-    }
+    },
+    {
+      email:'super.admin@test.com'
+    },
 ]
 
 const ReviewFlow =  ({
